@@ -1,0 +1,2 @@
+module User::TrainingHelper
+end
