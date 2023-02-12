@@ -1,29 +1,60 @@
-<h2>Sign up</h2>
+<div class='container'>
+  <div class='row'>
+    <div class="col">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "user/shared/error_messages", resource: resource %>
+      <h2 class="mx-auto" style="margin-top:20px">アカウントの新規登録</h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "user/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="form-group">
+          <%= f.label :name, "氏名" %>
+          <%= f.text_field :name, placeholder: "山田花子", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :name_kana, "フリガナ" %>
+          <%= f.text_field :name_kana, placeholder: "ヤマダハナコ", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <div class="field">
+              <%= f.label :date_of_birth, "生年月日" %><br>
+              <%= f.date_select :date_of_birth, {start_year: 1950, end_year: 2023, include_blank: true, use_two_digit_numbers: true}, {class: "input-tab birthday-select"} %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :sex, "性別" %><br>
+          <%= f.radio_button :sex, 0, {checked: true} %> 男性
+          <%= f.radio_button :sex, 1, {} %> 女性
+          <%= f.radio_button :sex, 2, {} %> その他
+          <%= f.radio_button :sex, 2, {} %> 回答しない
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, "パスワード(6文字以上)" %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, "パスワード(確認用)"  %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "新規登録" %>
+        </div>
+
+        <p>既に登録済みの方は <%= link_to "こちら", new_user_session_path %> からログインしてください。</p>
+
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "user/shared/links" %>
+</div>
