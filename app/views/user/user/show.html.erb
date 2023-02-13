@@ -1,2 +1,17 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class="col">
+      <h2>マイページ</h2>
+      <table class='table'>
+        <tr><%= image_tag @user.get_profile_image(100,100) %></tr>
+      	<th>name</th>
+      	<th></th>
+        </tr>
+        <tr>
+      	  <th>introduction</th>
+      	  <th></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
