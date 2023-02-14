@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2023_02_13_054603) do
     t.string "name", null: false
     t.string "name_kana", null: false
     t.date "date_of_birth", null: false
-    t.string "sex_select", null: false
+    t.integer "sex_select", null: false
     t.text "introduction"
     t.string "profile_image"
     t.boolean "is_deleted", default: false, null: false

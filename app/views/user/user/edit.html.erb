@@ -2,64 +2,58 @@
   <div class="row">
     <div class="col-4" style="margin-top:20px">
       <h2>プロフィール編集</h2>
+      <%= form_with model: @user, url: user_path(@user) do |f| %>
       <div class="" style="margin-top:100px">
         <div class="">
-          <%= form_with model: @user do |f| %>
-            <%= image_tag @user.get_profile_image(100,100), class: "btn btn-outline-secondary" %>
-            <%= f.file_field :profile_image,  accept: "image/*" %>
-          <% end %>
+          <%= image_tag @user.get_profile_image(100,100), class: "btn btn-outline-secondary" %>
+          <%= f.file_field :profile_image, accept: "image/*" , class:"form-control-file user_image" , id:"user_profile_image"%>
         </div>
       </div>
     </div>
-
-
     <div class="col-8" style="margin-top:100px">
-      <%= form_with model: @user do |f| %>
+      <div class="row mb-3">
+        <div class="col-sm-2 col-form-label"><%= f.label :name, "氏名" %></div>
+        <div class="col-sm-10"><%= f.text_field :name, class:"form-control name", id:"user_name" %></div>
+      </div>
 
-        <div class="row mb-3">
-          <div class="col-sm-2 col-form-label"><%= f.label :name, "氏名" %></div>
-          <div class="col-sm-10"><%= f.text_field :name, class:"form-control name", id:"user_name" %></div>
+      <div class="row mb-3">
+        <div class="col-sm-2 col-form-label"><%= f.label :name_kana, "フリガナ" %></div>
+        <div class="col-sm-10"><%= f.text_field :name_kana, class:"form-control name_kana", id:"user_name_kana" %></div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-2 col-form-label"><%= f.label :date_of_birth, "生年月日" %></div>
+        <div class="col-sm-10"><%= f.date_select :date_of_birth, {start_year: 1950, end_year: 2023, include_blank: true, use_two_digit_numbers: true}, {class: "input-tab birthday-select"} %></div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-2 col-form-label"><%= f.label :sex_select, "性別" %></div>
+        <div class="col-sm-10">
+          <%= f.radio_button :sex_select, User.sex_selects.key(0), checked: @user.sex_select == "male" %>
+          <%= f.label :sex_select_male, User.sex_selects_i18n[:male] %>
+          <%= f.radio_button :sex_select, User.sex_selects.key(1), checked: @user.sex_select == "female" %>
+          <%= f.label :sex_select_female, User.sex_selects_i18n[:female] %>
+          <%= f.radio_button :sex_select, User.sex_selects.key(2) , checked: @user.sex_select == "other"%>
+          <%= f.label :sex_select_other, User.sex_selects_i18n[:other] %>
+          <%= f.radio_button :sex_select, User.sex_selects.key(3) %>
+          <%= f.label :sex_select_no_answer, User.sex_selects_i18n[:no_answer], checked: @user.sex_select == "no_answer" %>
         </div>
+      </div>
 
-        <div class="row mb-3">
-          <div class="col-sm-2 col-form-label"><%= f.label :name_kana, "フリガナ" %></div>
-          <div class="col-sm-10"><%= f.text_field :name_kana, class:"form-control name_kana", id:"user_name_kana" %></div>
-        </div>
+      <div class="row mb-3">
+        <div class="col-sm-2 col-form-label"><%= f.label :email, "email" %></div>
+        <div class="col-sm-10"><%= f.text_field :email, class:"form-control email", id:"user_email" %></div>
+      </div>
 
-        <div class="row mb-3">
-          <div class="col-sm-2 col-form-label"><%= f.label :date_of_birth, "生年月日" %></div>
-          <div class="col-sm-10"><%= f.date_select :date_of_birth, {start_year: 1950, end_year: 2023, include_blank: true, use_two_digit_numbers: true}, {class: "input-tab birthday-select"} %></div>
-        </div>
+      <div class="row mb-3">
+        <div class="col-sm-2 col-form-label"><%= f.label :introduction, "自己紹介" %></div>
+        <div class="col-sm-10"><%= f.text_field :introduction, class:"form-control introduction", id:"user_introduction" %></div>
+      </div>
 
-        <div class="row mb-3">
-          <div class="col-sm-2 col-form-label"><%= f.label :sex, "性別" %></div>
-          <div class="col-sm-10">
-            <%= f.radio_button :sex, User.sex_selects.key(0) %>
-            <%= f.label :sex_select_male, User.sex_selects_i18n[:male] %>
-            <%= f.radio_button :sex, User.sex_selects.key(1) %>
-            <%= f.label :sex_select_female, User.sex_selects_i18n[:female] %>
-            <%= f.radio_button :sex, User.sex_selects.key(2) %>
-            <%= f.label :sex_select_other, User.sex_selects_i18n[:other] %>
-            <%= f.radio_button :sex, User.sex_selects.key(3) %>
-            <%= f.label :sex_select_no_answer, User.sex_selects_i18n[:no_answer] %>
-          </div>
-        </div>
-
-        <div class="row mb-3">
-          <div class="col-sm-2 col-form-label"><%= f.label :email, "email" %></div>
-          <div class="col-sm-10"><%= f.text_field :email, class:"form-control email", id:"user_email" %></div>
-        </div>
-
-        <div class="row mb-3">
-          <div class="col-sm-2 col-form-label"><%= f.label :introduction, "自己紹介" %></div>
-          <div class="col-sm-10"><%= f.text_field :introduction, class:"form-control introduction", id:"user_introduction" %></div>
-        </div>
-
-        <div class="form-group d-flex justify-content-space-between">
-          <%= f.submit '保存する' , class:"btn btn-success" %>
-          <div style="margin-left:20px"><%= link_to '退会する', root_path,  class: "btn btn-danger" %></div>
-        </div>
-
+      <div class="form-group d-flex justify-content-space-between">
+        <%= f.submit '保存する' , class:"btn btn-success" %>
+        <div style="margin-left:20px"><%= link_to '退会する', root_path,  class: "btn btn-danger" %></div>
+      </div>
       <% end %>
     </div>
   </div>

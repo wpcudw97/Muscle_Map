@@ -7,11 +7,11 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   enum sex_select: { #性別選択
-  male: 0,
-  female: 1,
-  other: 2,
-  no_answer: 3
-}
+    male: 0,
+    female: 1,
+    other: 2,
+    no_answer: 3
+  }
 
   def get_profile_image(width,height)
   unless profile_image.attached?

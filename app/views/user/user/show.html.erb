@@ -6,9 +6,11 @@
         <h5>プロフィール</h5>
         <div class="">
           <%= link_to edit_user_path(@user.id), class:"btn btn-outline-secondary" do %>
-            <%= image_tag @user.get_profile_image(100,100) %>　<!-- 画像をもっと大きくしたい -->
+            <%= image_tag @user.get_profile_image(100,100) %>
           <% end %>
+          <% if @user == current_user %>
           <p><%= link_to "プロフィールを編集する", edit_user_path(@user.id) %></p>
+          <% end %>
         </div>
       </div>
     </div>
@@ -25,7 +27,7 @@
         </tr>
         <tr>
           <th class="table-secondary">生年月日</th>
-          <td><%= @user.date_of_birth %></td> <!-- "-"ではなく"/"がいいけど、修正優先度は低 -->
+          <td><%= @user.date_of_birth.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
           <th class="table-secondary">性別</th>

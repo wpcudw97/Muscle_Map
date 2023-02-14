@@ -63,6 +63,11 @@
     </header>
 
     <main class="mb-auto">
+      <p id="notice">
+        <% flash.each do |message_type, message| %>
+          <%= message %>
+        <% end %>
+      </p>
     <%= yield %>
     </main>
 
