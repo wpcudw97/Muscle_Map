@@ -22,13 +22,19 @@
             <%= f.date_select :date_of_birth, {start_year: 1950, end_year: 2023, include_blank: true, use_two_digit_numbers: true}, {class: "input-tab birthday-select"} %>
           </div>
         </div>
-
+        
         <div class="form-group">
-          <%= f.label :sex, "性別" %><br>
-          <%= f.radio_button :sex, 0, {checked: true} %> 男性
-          <%= f.radio_button :sex, 1, {} %> 女性
-          <%= f.radio_button :sex, 2, {} %> その他
-          <%= f.radio_button :sex, 2, {} %> 回答しない
+          <div>
+            <%= f.label :sex, "性別" %>
+          </div>
+          <%= f.radio_button :sex, User.sex_selects.key(0) %>
+          <%= f.label :sex_select_male, User.sex_selects_i18n[:male] %>
+          <%= f.radio_button :sex, User.sex_selects.key(1) %>
+          <%= f.label :sex_select_female, User.sex_selects_i18n[:female] %>
+          <%= f.radio_button :sex, User.sex_selects.key(2) %>
+          <%= f.label :sex_select_other, User.sex_selects_i18n[:other] %>
+          <%= f.radio_button :sex, User.sex_selects.key(3) %>
+          <%= f.label :sex_select_no_aunser, User.sex_selects_i18n[:no_aunser] %>
         </div>
 
         <div class="form-group">
