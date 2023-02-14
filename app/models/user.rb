@@ -10,7 +10,7 @@ class User < ApplicationRecord
   male: 0,
   female: 1,
   other: 2,
-  no_aunser: 3
+  no_answer: 3
 }
 
   def get_profile_image(width,height)

@@ -15,7 +15,7 @@ class User::SessionsController < Devise::SessionsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :name_kana, :date_of_birth, :sex, :ntroduction, :profile_image, :is_deleted])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :name_kana, :date_of_birth, :sex_select, :introduction, :profile_image, :is_deleted])
   end
 
   # GET /resource/sign_in

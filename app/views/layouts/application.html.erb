@@ -24,10 +24,10 @@
               <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to "トレーニング", user_trainings_path, class: 'nav-link text-dark' %>
+              <%= link_to "トレーニング", trainings_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to '投稿一覧', user_posts_path, class: 'nav-link text-dark' %>
+              <%= link_to '投稿一覧', posts_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
@@ -37,10 +37,10 @@
               <%= link_to "アバウト", about_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to "トレーニング", user_trainings_path, class: 'nav-link text-dark' %>
+              <%= link_to "トレーニング", trainings_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to "投稿一覧", user_posts_path, class: 'nav-link text-dark' %>
+              <%= link_to "投稿一覧", posts_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>

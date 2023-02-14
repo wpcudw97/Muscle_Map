@@ -18,10 +18,10 @@ Rails.application.routes.draw do
   #ユーザ側のルーティング
   root to: "user/homes#top"
   get "about" => "user/homes#about", as: "about"
-  get "users/my_page/:id" => "user/user#show", as: "user"
-  get "information/edit" => "user/user#edit", as: "edit_user"
-  patch "users/information" => "user/user#update"
-  namespace :user do
+  # get "users/my_page/:id/edit" => "user/user#edit", as: "edit_user"
+  # patch 'users/my_page/:id/update', to: 'user/user#update'
+  scope module: :user do
+    resources :user, only: [:show, :edit, :update]
     resources :trainings, only: [:index, :show]
     resources :posts, only:[:new, :index, :show, :edit, :update, :delete]
   end
