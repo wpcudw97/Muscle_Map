@@ -1,0 +1,14 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col text-center">
+      <p class="d-flex justify-content-center container " style="margin-top:140px">
+        <h2>本当に退会しますか?</h2>
+        <p style="margin-top:40px">
+          退会すると、登録・保存していた内容は全て削除され、復元出来ません。<br>
+          退会される場合は、「退会する」をクリックしてください。
+        </p>
+        <div style="margin-top:40px"><%= link_to '退会しない', user_path(@user), class: "btn btn-primary d-grid gap-2 col-2 mx-auto" %>　　<%= link_to '退会する', withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？",  class: "btn btn-danger d-grid gap-2 col-2 mx-auto" %></div>
+      </p>
+    </div>
+  </div>
+</div>

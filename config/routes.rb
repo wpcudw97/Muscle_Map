@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: {
-  registrations: "user/registrations",
-  passwords: "user/passwords",
-  sessions: 'user/sessions'
+  registrations: "users/registrations",
+  passwords: "users/passwords",
+  sessions: 'users/sessions'
 }
 
   devise_for :admin, controllers: {
@@ -16,12 +16,12 @@ Rails.application.routes.draw do
   end
 
   #ユーザ側のルーティング
-  root to: "user/homes#top"
-  get "about" => "user/homes#about", as: "about"
-  # get "users/my_page/:id/edit" => "user/user#edit", as: "edit_user"
-  # patch 'users/my_page/:id/update', to: 'user/user#update'
-  scope module: :user do
-    resources :user, only: [:show, :edit, :update]
+  root to: "users/homes#top"
+  get "about" => "users/homes#about", as: "about"
+  get "users/:id/unsubscribe" => "users/users#unsubscribe", as: "unsubscribe"
+  patch "users/:id/withdraw" => "users/users#withdraw", as: "withdraw"
+  scope module: :users do
+    resources :users, only: [:show, :edit, :update]
     resources :trainings, only: [:index, :show]
     resources :posts, only:[:new, :index, :show, :edit, :update, :delete]
   end

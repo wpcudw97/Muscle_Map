@@ -13,6 +13,11 @@ class User < ApplicationRecord
     no_answer: 3
   }
 
+  enum is_deleted: { #会員ステータス
+    有効: false,
+    退会: true
+  }
+
   def get_profile_image(width,height)
   unless profile_image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.jpeg')
