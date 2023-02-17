@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2023_02_16_124752) do
     t.integer "menu_id", null: false
     t.string "title", null: false
     t.string "body", null: false
+    t.string "post_image"
     t.float "rate", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

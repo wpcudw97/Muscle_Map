@@ -8,7 +8,7 @@ class Users::PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.menu_id = current_user.id
     if @post.save
-      flash[:notice] = 'You have created book successfully.'
+      flash[:notice] = "投稿しました！"
       redirect_to post_path(@post.id)
     else
       @posts = Post.all
@@ -42,7 +42,7 @@ class Users::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :rate)
+    params.require(:post).permit(:title, :body, :post_image, :rate)
   end
 
 end
