@@ -3,41 +3,56 @@
     <div class="col-4" style="margin-top:20px">
     <h3>投稿する</h3>
       <%= form_with model: @post do |f| %>
+      <div class="form-group" style="margin-top:30px">
+        <h5 class="mb-3">タイトル</h5>
+        <%= f.text_field :title, class:"form-control", style:"width:70%", id:"title" %>
+      </div>
 
-        <div class="form-group" style="margin-top:30px">
-          <h5 class="mb-3">タイトル</h5>
-          <%= f.text_field :title, class:"form-control", style:"width:70%", id:"title" %>
-        </div>
+      <div class="form-group">
+        <h5 class="mb-3">本文</h5>
+        <%= f.text_area :body, class:"form-control", style:"width:70%", rows:"3", id:"body"%>
+      </div>
 
-        <div class="form-group">
-          <h5 class="mb-3">本文</h5>
-          <%= f.text_area :body, class:"form-control", style:"width:70%", rows:"3", id:"body"%>
-        </div>
+      <div class="form-grop">
+        <h5 class="mb-3">画像</h5>
+        <%= f.file_field :post_image, accept: "image/*", id:"postimage"%>
+      </div>
 
-        <div class="form-grop">
-          <h5 class="mb-3">画像</h5>
-          <%= f.file_field :post_image, accept: "image/*", id:"postimage"%>
-        </div>
-
-        <div style="margin-top:30px">
-          <%= f.submit "投稿する", class:"btn btn-success" %>
-        </div>
+      <div style="margin-top:30px">
+        <%= f.submit "投稿する", class:"btn btn-success" %>
+      </div>
     </div>
 
     <div class="col-8">
-      <h2><%= @post.title %></h2>
-      <p>
-        <%= @user.name %>さん
-        <span style="margin-left:20px"><%= @post.created_at.strftime('%Y/%m/%d') %></span>
-      </p>
+
       <div>
-        <%= image_tag @post.get_post_image(100,100) %>
+        <h2><%= @post.title %></h2>
+        <p>
+          <%= @user.name %>さん
+          <span style="margin-left:20px"><%= @post.created_at.strftime('%Y/%m/%d') %></span>
+        </p>
       </div>
-      <div class="col">
-        <h3><%= @post.title %></h3>
-        <p><%= @post.body %></p>
-      </div>
+
+      <div class='row'>
+
+        <div class="col-4">
+          <%= image_tag @post.get_post_image(100,100) %>
+        </div>
+
+        <div class="col-4">
+          <div class="col">
+            <h3><%= @post.title %></h3>
+            <p><%= @post.body %></p>
+            <div>
+              <% if user_signed_in? && current_user.id == @post.user_id %>
+                <%= link_to '編集' , edit_post_path(@post.id) , class:"btn btn-sm btn-success" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
       <% end %>
+
     </div>
   </div>
 </div>
