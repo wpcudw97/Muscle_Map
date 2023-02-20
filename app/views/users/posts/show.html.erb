@@ -45,6 +45,19 @@
           <div class="col">
             <h3><%= @post.title %></h3>
             <p class="text-break" style="width: 30rem;"><%= safe_join( @post.body.split("\n"),tag(:br))%></p>
+            <% if @post.favorited_by?(current_user) %>
+              <p>
+                <%= link_to post_favorites_path(@post.id), method: :delete do %>
+                  ♥<%= @post.favorites.count %> いいね
+                <% end %>
+              </p>
+              <% else %>
+              <p>
+                <%= link_to post_favorites_path(@post.id), method: :post do %>
+                  ♡<%= @post.favorites.count %> いいね
+                <% end %>
+              </p>
+            <% end %>
             <div>
               <% if user_signed_in? && current_user.id == @post.user_id %>
                 <%= link_to '編集' , edit_post_path(@post.id) , class:"btn btn-success" %>

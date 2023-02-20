@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   scope module: :users do
     resources :users, only: [:show, :edit, :update]
     resources :trainings, only: [:index, :show]
-    resources :posts, only:[:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :posts, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
+      resource :favorites, only: [:create, :destroy]
+    end
   end
 
 end
