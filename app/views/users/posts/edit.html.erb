@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>投稿編集</h2>
+      <%= form_with model: @post, url: post_path(@post) do |f| %>
+        <div class="form-group">
+          <%= f.label :post_image, "画像" %>
+          <%= f.file_field :post_image, accept: "image/*" , class:"form-control-file user_image" , id:"user_profile_image"%>
+        </div>
+
+        <!-- 星評価の表示 -->
+
+        <div class="form-group">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title, class:"form-control title", id:"post_title" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :body, "本文" %>
+          <%= f.text_area :body, class:"form-control body", rows:"6", id:"post_body" %>
+        </div>
+
+         <div class="form-group text-center">
+          <%= f.submit "保存する", class:"btn btn-success" %>
+          <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-danger", style:"margin-left:20px" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
