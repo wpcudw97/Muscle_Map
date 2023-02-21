@@ -37,6 +37,10 @@ class Users::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def likes
+    @favorites = Favorite.where(user_id: current_user.id)
+  end
+
   private
 
   def user_params

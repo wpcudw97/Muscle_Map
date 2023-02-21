@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "about" => "users/homes#about", as: "about"
   get "users/:id/unsubscribe" => "users/users#unsubscribe", as: "unsubscribe"
   patch "users/:id/withdraw" => "users/users#withdraw", as: "withdraw"
+  get "users/likes" => "users/users#likes", as: "likes"
   scope module: :users do
     resources :users, only: [:show, :edit, :update]
     resources :trainings, only: [:index, :show]
