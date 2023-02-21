@@ -16,7 +16,7 @@
         <% @users.each do |user| %>
           <tr>
             <td><%= user.id %></td>
-            <td><%= link_to user.name, root_path, class: "text-dark", style: "padding: 1px; border-bottom: solid 1px black;"%></td><!-- userの詳細ページpathに変更必要 -->
+            <td><%= link_to user.name, admin_user_path(user.id), class: "text-dark", style: "padding: 1px; border-bottom: solid 1px black;"%></td><!-- userの詳細ページpathに変更必要 -->
             <td><%= user.email %></td>
             <td><%= user.is_deleted %></td>
           </tr>

@@ -1,0 +1,55 @@
+<div class="container">
+  <h3><%= @user.name %>さんの会員詳細</h3>
+
+  <div class="row">
+    <div class="col" style="margin-top:20px">
+      <%= form_with model: @user, url: admin_user_path do |f| %>
+
+        <div class="form-group">
+          <%= f.label :id, "会員ID", class: "col-sm-4 col-form-label" %>
+          <%= @user.id %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :name, "氏名", class: "col-sm-4 col-form-label" %>
+          <%= @user.name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :name_kana, "フリガナ", class: "col-sm-4 col-form-label" %>
+          <%= @user.name_kana %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :date_of_birth, "生年月日", class: "col-sm-4 col-form-label" %>
+          <%= @user.date_of_birth.strftime('%Y/%m/%d') %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :sex_select, "性別", class: "col-sm-4 col-form-label" %>
+          <%= @user.sex_select_i18n %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :introduction, "自己紹介", class: "col-sm-4 col-form-label" %>
+          <%= @user.introduction %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email, "メールアドレス", class: "col-sm-4 col-form-label" %>
+          <%= @user.email %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :is_deleted, "会員ステータス", class: "col-sm-4 col-form-label" %>
+          <%= @user.is_deleted %>
+        </div>
+
+        <div class="d-flex justify-content-around">
+          <%= link_to "編集する",  edit_admin_user_path(@user.id), class: "btn btn-success" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

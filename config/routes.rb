@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'homes/top'
   devise_for :users, controllers: {
   registrations: "users/registrations",
   passwords: "users/passwords",
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
   #管理者側のルーティング
   namespace :admin do
     root to: "homes#top"
+    resources :users, only: [:show, :edit, :update]
     resources :trainings, only: [:new, :create, :index, :show, :edit, :update]
   end
 
