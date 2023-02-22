@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :users, only: [:show, :edit, :update]
     resources :trainings, only: [:new, :create, :index, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
   end
 
   #ユーザ側のルーティング
