@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col" style="margin-top:20px">
-    <h3 class="d-flex justify-content-between">
+    <h2 class="d-flex justify-content-between mx-auto">
       メニュー一覧
       <%= link_to "メニューを追加する", new_admin_menu_path, class:"btn btn-primary" %>
     </h3>
@@ -12,14 +12,16 @@
           <th>メニューID</th>
           <th>トレーニング名</th>
           <th>ジャンル</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <% @menus.each do |menu| %>
           <tr>
             <td><%= menu.id %></td>
-            <td><%= link_to menu.name, admin_menu_path(menu.id), class: "text-dark", style: "padding: 1px; border-bottom: solid 1px black;"%></td>
+            <td><%= link_to menu.title, admin_menu_path(menu.id) %></td>
             <td><%= menu.genre.name %></td>
+            <td><%= link_to "編集する", edit_admin_menu_path(menu.id), class:"btn btn-success" %></td>
         <% end %>
       </tbody>
     </table>

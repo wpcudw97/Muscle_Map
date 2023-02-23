@@ -1,2 +1,36 @@
-<h1>Admin::Menus#new</h1>
-<p>Find me in app/views/admin/menus/new.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class="col">
+      <h2 class="mx-auto" style="margin-top:20px">メニュー作成</h2>
+
+      <%= form_with model: @menu, url: admin_menus_path do |f| %>
+
+        <div class="form-group">
+          <%= f.label :menu_image, "画像" %><br>
+          <%= f.file_field :menu_image, accept: "image/*", id:"postimage"%>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :title, "トレーニング名" %>
+          <%= f.text_field :title, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :genre_id, "ジャンル" %><br>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, options = { include_blank: "--選択してください--"}, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :body, "メニュー内容" %>
+          <%= f.text_area :body, class:"form-control" %>
+        </div>
+
+        <div style="margin-top:30px">
+          <%= f.submit "投稿する", class:"btn btn-success" %>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
