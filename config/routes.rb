@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :users do
-    get 'menus/index'
-    get 'menus/show'
-  end
   devise_for :users, controllers: {
   registrations: "users/registrations",
   passwords: "users/passwords",
@@ -32,7 +28,9 @@ Rails.application.routes.draw do
   get "users/likes" => "users/users#likes", as: "likes"
   scope module: :users do
     resources :users, only: [:show, :edit, :update]
-    resources :menus, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :menus, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resource :comments, only: [:create, :show, :edit, :update, :destroy]
+    end
     resources :posts, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
     end

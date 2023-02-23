@@ -7,7 +7,7 @@
         ジャンル名:<%= @menu.genre.name %>
         <span style="margin-left:20px"><%= @menu.created_at.strftime('%Y/%m/%d') %></span>
         <span style="margin-left:10px">
-          <%= link_to root_path do %>
+          <%= link_to menu_comments_path(@menu) do %>
             <i class="fas fa-comment-dots fa-lg"></i>
           <% end %>
         </span>
