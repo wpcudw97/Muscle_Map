@@ -1,15 +1,35 @@
-<div class='container'>
-  <div class='row'>
-    <div class="col">
+<div class="container">
+  <div class="row">
+    <div class="col-8">
 
       <h2 class="mx-auto" style="margin-top:20px"><%= @menu.title %></h2>
       <p>
         ジャンル名:<%= @menu.genre.name %>
         <span style="margin-left:20px"><%= @menu.created_at.strftime('%Y/%m/%d') %></span>
       </p>
-      <div><%= image_tag @menu.get_menu_image(100,100) %></div>
-      <div class="col-7"><%= @menu.body  %></div>
+      <div><%= image_tag @menu.get_menu_image(520,300) %></div>
+      <div style="margin-top:20px"><%= safe_join(@menu.body.split("\n"),tag(:br)) %></div>
 
     </div>
+
+    <div class="col-4">
+      <div class="article" style="margin-top:20px">
+        <h5>その他記事</h5>
+        <% @menus.shuffle.first(7).each do |menu| %>
+           <nav class="navbar">
+             <ul class="navbar-nav">
+               <li><%= link_to menu.title, admin_menu_path(menu.id) %></li>
+             </ul>
+           </nav>
+        <% end %>
+      </div>
+
+      <div class="article" style="margin-top:20px">
+        <h5 style="margin-bottom:20px">トレーニングについて</h5>
+        <p class="text-wrap" style="width: 14rem;">トレーニングで重要なのは<br>「しっかりしたフォーム」と「効きを意識すること」です。フォームが崩れてしまうと、<br>違う場所に効いてしまったり、怪我の原因になるので、<br>注意して取り組みましょう。</p>
+      </div>
+
+    </div>
+
   </div>
 </div>

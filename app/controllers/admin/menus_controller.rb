@@ -14,6 +14,7 @@ class Admin::MenusController < ApplicationController
   end
 
   def show
+    @menus = Menu.all
     @menu = Menu.find(params[:id])
   end
 
@@ -24,7 +25,7 @@ class Admin::MenusController < ApplicationController
   def update
     @menu = Menu.find(params[:id])
     @menu.update(menu_params)
-    redirect_to admin_menus_path
+    redirect_to admin_menu_path(@menu.id)
   end
 
   def destroy
