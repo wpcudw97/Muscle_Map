@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col" style="margin-top:20px">
+     <h2 class="d-flex justify-content-between mx-auto">メニュー一覧</h2>
+
+    <table class='table'>
+      <thead>
+        <tr class="table-secondary">
+          <th>トレーニング名</th>
+          <th>ジャンル</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @menus.each do |menu| %>
+          <tr>
+            <td><%= link_to menu.title, menu_path(menu.id) %></td>
+            <td><%= menu.genre.name %></td>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>

@@ -3,9 +3,9 @@
     <div class="col-4" style="margin-top:20px">
       <h2>プロフィール編集</h2>
       <%= form_with model: @user, url: user_path(@user) do |f| %>
-      <div class="" style="margin-top:100px">
+      <div style="margin-top:40px">
         <div class="">
-          <%= image_tag @user.get_profile_image(100,100), class: "btn btn-outline-secondary" %>
+          <%= image_tag @user.get_profile_image(300,300), class: "btn btn-outline-secondary" %>
           <%= f.file_field :profile_image, accept: "image/*" , class:"form-control-file user_image" , id:"user_profile_image"%>
         </div>
       </div>
