@@ -26,10 +26,11 @@ Rails.application.routes.draw do
   get "users/:id/unsubscribe" => "users/users#unsubscribe", as: "unsubscribe"
   patch "users/:id/withdraw" => "users/users#withdraw", as: "withdraw"
   get "users/likes" => "users/users#likes", as: "likes"
+  get "menus/:id/comments" => "users/comments#comment", as: "comment"
   scope module: :users do
     resources :users, only: [:show, :edit, :update]
     resources :menus, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
-      resource :comments, only: [:create, :show, :edit, :update, :destroy]
+      resource :comments, only: [:create, :destroy]
     end
     resources :posts, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]

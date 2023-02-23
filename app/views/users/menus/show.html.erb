@@ -7,7 +7,7 @@
         ジャンル名:<%= @menu.genre.name %>
         <span style="margin-left:20px"><%= @menu.created_at.strftime('%Y/%m/%d') %></span>
         <span style="margin-left:10px">
-          <%= link_to menu_comments_path(@menu) do %>
+          <%= link_to comment_path(@menu.id) do %>
             <i class="fas fa-comment-dots fa-lg"></i>
           <% end %>
         </span>
@@ -16,6 +16,22 @@
       <div><%= image_tag @menu.get_menu_image(500,600) %></div>
       <div style="margin-top:20px"><%= safe_join(@menu.body.split("\n"),tag(:br)) %></div>
 
+<!-- このコメント機能をコメントページに持っていきたい -->
+      <%= form_with model: [@menu, @comment], local: true do |form| %>
+        <%= form.text_area :comment, placeholder: "コメントする", rows: "2" %>
+        <%= form.submit "送信" %>
+      <% end %>
+      <h4>コメント一覧</h4>
+      <% @comments.each do |comment| %>
+        <p>
+          <%= comment.user.name %>
+          <%= comment.comment %>
+          <% if user_signed_in? && current_user.id == comment.user_id %>
+            <%= link_to "削除", menu_comments_path(comment.menu.id, comment.id), method: :delete %>
+          <% end %>
+        </p>
+      <% end %>
+<!-- -->
     </div>
 
     <div class="col-4">
@@ -24,7 +40,7 @@
         <% @menus.shuffle.first(7).each do |menu| %>
            <nav class="navbar">
              <ul class="navbar-nav">
-               <li><%= link_to menu.title, admin_menu_path(menu.id) %></li>
+               <li><%= link_to menu.title, menu_path(menu.id) %></li>
              </ul>
            </nav>
         <% end %>
