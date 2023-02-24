@@ -1,4 +1,5 @@
 class Admin::MenusController < ApplicationController
+
   def index
     @menus = Menu.all
   end
@@ -16,6 +17,8 @@ class Admin::MenusController < ApplicationController
   def show
     @menus = Menu.all
     @menu = Menu.find(params[:id])
+    @comment = Comment.new
+    @comments = @menu.comments
   end
 
   def edit

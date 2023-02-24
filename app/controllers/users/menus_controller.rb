@@ -1,4 +1,5 @@
 class Users::MenusController < ApplicationController
+
   def index
      @menus = Menu.all
   end

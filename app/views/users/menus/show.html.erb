@@ -37,16 +37,17 @@
         </div>
 
         <h4>コメント一覧</h4>
-        <% @comments.each do |comment| %>
-          <table class="table">
-            <thead>
-              <tr class="table-secondary">
-                <th>ユーザ名</th>
-                <th>コメント</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
+
+        <table class="table">
+          <thead>
+            <tr class="table-secondary">
+              <th>ユーザ名</th>
+              <th>コメント</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @comments.each do |comment| %>
               <tr>
                 <td><%= comment.user.name %></td>
                 <td><%= comment.comment %></td>
@@ -57,11 +58,10 @@
                   <% end %>
                 </td>
               </tr>
-            </tbody>
-          </table>
-        <% end %>
-
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-
   </div>
 </div>
