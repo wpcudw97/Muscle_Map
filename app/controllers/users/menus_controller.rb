@@ -6,7 +6,6 @@ class Users::MenusController < ApplicationController
   def show
     @menus = Menu.all
     @menu = Menu.find(params[:id])
-    @menu = Menu.find(params[:id])
     @comment = Comment.new
     @comments = @menu.comments.includes(:user)
   end

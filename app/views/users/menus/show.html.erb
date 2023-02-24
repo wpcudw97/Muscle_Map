@@ -1,43 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-8">
+    <div class="col-7">
 
       <h2 class="mx-auto" style="margin-top:20px"><%= @menu.title %></h2>
       <p>
         ジャンル名:<%= @menu.genre.name %>
         <span style="margin-left:20px"><%= @menu.created_at.strftime('%Y/%m/%d') %></span>
-        <span style="margin-left:10px">
-          <%= link_to comment_path(@menu.id) do %>
-            <i class="fas fa-comment-dots fa-lg"></i>
-          <% end %>
-        </span>
       </p>
 
       <div><%= image_tag @menu.get_menu_image(500,600) %></div>
       <div style="margin-top:20px"><%= safe_join(@menu.body.split("\n"),tag(:br)) %></div>
 
-<!-- このコメント機能をコメントページに持っていきたい -->
-      <%= form_with model: [@menu, @comment], local: true do |form| %>
-        <%= form.text_area :comment, placeholder: "コメントする", rows: "2" %>
-        <%= form.submit "送信" %>
-      <% end %>
-      <h4>コメント一覧</h4>
-      <% @comments.each do |comment| %>
-        <p>
-          <%= comment.user.name %>
-          <%= comment.comment %>
-          <% if user_signed_in? && current_user.id == comment.user_id %>
-            <%= link_to "削除", menu_comments_path(comment.menu.id, comment.id), method: :delete %>
-          <% end %>
-        </p>
-      <% end %>
-<!-- -->
     </div>
 
-    <div class="col-4">
+    <div class="col-5">
       <div class="article" style="margin-top:20px">
         <h5>その他記事</h5>
-        <% @menus.shuffle.first(7).each do |menu| %>
+        <% @menus.shuffle.first(4).each do |menu| %>
            <nav class="navbar">
              <ul class="navbar-nav">
                <li><%= link_to menu.title, menu_path(menu.id) %></li>
@@ -47,9 +26,40 @@
       </div>
 
       <div class="article" style="margin-top:20px">
-        <h5 style="margin-bottom:20px">トレーニングについて</h5>
-        <p class="text-wrap" style="width: 14rem;">トレーニングで重要なのは<br>「しっかりしたフォーム」と「効きを意識すること」です。フォームが崩れてしまうと、<br>違う場所に効いてしまったり、怪我の原因になるので、<br>注意して取り組みましょう。</p>
-      </div>
+        <h5 style="margin-bottom:20px">コメント</h5>
+        <div>
+          <%= form_with model: [@menu, @comment], local: true do |f| %>
+            <%= f.text_area :comment, placeholder: "コメントする", class:"form-control", rows:"2" %>
+            <div style="margin-top:10px">
+              <%= f.submit "コメント", class:"btn btn-sm btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+
+        <h4>コメント一覧</h4>
+        <% @comments.each do |comment| %>
+          <table class="table">
+            <thead>
+              <tr class="table-secondary">
+                <th>ユーザ名</th>
+                <th>コメント</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= comment.user.name %></td>
+                <td><%= comment.comment %></td>
+                <td>
+                  <% if user_signed_in? && current_user.id == comment.user_id %>
+                    <%= link_to "編集", edit_menu_comment_path(comment.menu.id, comment.id), class:"btn btn-sm btn-success" %>
+                    <%= link_to "削除", menu_comment_path(comment.menu.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-sm btn-danger"%>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
 
     </div>
 

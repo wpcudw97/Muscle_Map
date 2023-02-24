@@ -2,19 +2,29 @@ class Users::CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    if @comment.save
-      redirect_to menu_path(@comment.menu)
-    else
-      @menu = @comment.menu
-      @comments = @menu.comments.includes(:user)
-      render "posts/show"
-    end
+    @comment.save
+    flash[:notice] = "コメントしました！"
+    redirect_to menu_path(@comment.menu)
+  end
+
+  def edit
+    @menu = Menu.find(params[:menu_id])
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @menu = Menu.find(params[:menu_id])
+    @comment = Comment.find(params[:id])
+    @comment.update(comment_params)
+    flash[:success] = "コメント内容を変更しました！"
+    redirect_to menu_path(@comment.menu)
   end
 
   def destroy
-    # comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
-    # comment.destroy
-    # redirect_to post_path(comment.post)
+    comment = Comment.find_by(id: params[:id], menu_id: params[:menu_id])
+    comment.destroy
+    flash[:notice] = "コメントを削除しました！"
+    redirect_to menu_path(comment.menu)
   end
 
   private
