@@ -10,6 +10,8 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @new_post = Post.new
+    @evaluation = Evaluation.new
+    @evaluations = @post.evaluations.includes(:user)
   end
 
   def edit

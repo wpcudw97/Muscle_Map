@@ -27,5 +27,35 @@
       </div>
 
     </div>
+
+    <div class="col-4">
+        <h4>コメント一覧</h4>
+
+        <table class="table">
+          <thead>
+            <tr class="table-secondary">
+              <th>ユーザ名</th>
+              <th>コメント</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @evaluations.each do |evaluation| %>
+              <tr>
+                <td><%= evaluation.user.name %></td>
+                <td><%= evaluation.evaluation %></td>
+                <td>
+                  <%= link_to "編集", edit_admin_post_evaluation_path(evaluation.post.id, evaluation.id), class:"btn btn-sm btn-success" %>
+                  <%= link_to "削除", admin_post_evaluation_path(evaluation.post.id, evaluation.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-sm btn-danger"%>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+
   </div>
 </div>
