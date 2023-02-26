@@ -1,18 +1,5 @@
 class Admin::CommentsController < ApplicationController
 
-  def create
-    @menu = Menu.find(params[:menu_id])
-    @comment = @menu.comments.new(comment_params)
-    @comment.user_id = current_user.id
-    if @comment.save
-      redirect_to admin_menu_path(@comment.menu)
-    else
-      @menu_new = Comment.new
-      @comments = @menu.comments
-      redirect_to new_admin_menu_path
-    end
-  end
-
   def edit
     @menu = Menu.find(params[:menu_id])
     @comment = Comment.find(params[:id])

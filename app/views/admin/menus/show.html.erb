@@ -8,7 +8,7 @@
         <span style="margin-left:20px"><%= @menu.created_at.strftime('%Y/%m/%d') %></span>
       </p>
 
-      <div><%= image_tag @menu.get_menu_image(500,600) %></div>
+      <div><%= image_tag @menu.get_menu_image(500,500) %></div>
       <div style="margin-top:20px"><%= safe_join(@menu.body.split("\n"),tag(:br)) %></div>
 
     </div>

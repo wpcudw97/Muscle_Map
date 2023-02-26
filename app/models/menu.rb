@@ -1,6 +1,5 @@
 class Menu < ApplicationRecord
   has_many :comments, dependent: :destroy
-  belongs_to :user
   belongs_to :genre
   has_one_attached :menu_image
 

@@ -17,7 +17,7 @@ class Admin::MenusController < ApplicationController
   def show
     @menu = Menu.find(params[:id])
     @comment = Comment.new
-    @comments = @menu.comments
+    @comments = @menu.comments.includes(:user)
   end
 
   def edit
@@ -27,8 +27,8 @@ class Admin::MenusController < ApplicationController
   def update
     @menu = Menu.find(params[:id])
     @menu.update(menu_params)
-    flash[:notice] = "登録内容を変更しました"
-    redirect_to admin_menu_path(@menu.id)
+    flash[:notice] = "メニュー内容を更新しました！"
+    redirect_to admin_menu_path(@menu)
   end
 
   def destroy
