@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
+  has_many :evaluations, dependent: :destroy
   belongs_to :user
   has_one_attached :post_image
 

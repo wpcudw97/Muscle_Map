@@ -27,6 +27,8 @@ class Users::CommentsController < ApplicationController
     redirect_to menu_path(comment.menu)
   end
 
+  private
+
   def comment_params
     params.require(:comment).permit(:comment).merge(user_id: current_user.id, menu_id: params[:menu_id])
   end
