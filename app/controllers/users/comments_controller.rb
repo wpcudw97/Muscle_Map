@@ -15,7 +15,6 @@ class Users::CommentsController < ApplicationController
   def update
     @menu = Menu.find(params[:menu_id])
     @comment = Comment.find(params[:id])
-
     @comment.update(comment_params)
     flash[:notice] = "コメント内容を変更しました！"
     redirect_to menu_path(@comment.menu)

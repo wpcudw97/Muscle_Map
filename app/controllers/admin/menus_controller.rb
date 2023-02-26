@@ -15,7 +15,6 @@ class Admin::MenusController < ApplicationController
   end
 
   def show
-    @menus = Menu.all
     @menu = Menu.find(params[:id])
     @comment = Comment.new
     @comments = @menu.comments
@@ -28,6 +27,7 @@ class Admin::MenusController < ApplicationController
   def update
     @menu = Menu.find(params[:id])
     @menu.update(menu_params)
+    flash[:notice] = "登録内容を変更しました"
     redirect_to admin_menu_path(@menu.id)
   end
 
@@ -37,6 +37,8 @@ class Admin::MenusController < ApplicationController
     flash[:notice] = "メニューを削除しました"
     redirect_to admin_menus_path
   end
+
+  private
 
   def menu_params
     params.require(:menu).permit(:genre_id, :title, :body, :menu_image)

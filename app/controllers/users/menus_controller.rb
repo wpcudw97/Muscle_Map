@@ -1,7 +1,7 @@
 class Users::MenusController < ApplicationController
 
   def index
-     @menus = Menu.all
+    @menus = Menu.all
   end
 
   def show
@@ -10,6 +10,8 @@ class Users::MenusController < ApplicationController
     @comment = Comment.new
     @comments = @menu.comments.includes(:user)
   end
+
+  private
 
   def menu_params
     params.require(:menu).permit(:genre_id, :title, :body, :menu_image)
