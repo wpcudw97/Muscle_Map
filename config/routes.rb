@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
+  get "search" => "searches#search"
+
   #管理者側のルーティング
   namespace :admin do
     root to: "homes#top"
