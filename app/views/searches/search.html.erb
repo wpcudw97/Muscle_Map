@@ -10,15 +10,15 @@
             <th>タイトル</th>
           </tr>
         </thead>
-          <tbody>
-            <% @menus.each do |menu| %>
-              <tr>
-                <td><%= link_to menu.title, menu_path(menu.id) %></td>
-              </tr>
-            <% end %>
+        <tbody>
+          <% @menus.each do |menu| %>
+            <tr>
+              <td><%= link_to menu.title, menu_path(menu.id) %></td>
+            </tr>
+          <% end %>
         </tbody>
       <% else %>
-      <thead>
+        <thead>
           <tr>
             <th>タイトル</th>
           </tr>
