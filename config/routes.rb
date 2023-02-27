@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
-  get "search" => "searches#search"
+
 
   #管理者側のルーティング
   namespace :admin do
@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get "users/:id/unsubscribe" => "users/users#unsubscribe", as: "unsubscribe"
   patch "users/:id/withdraw" => "users/users#withdraw", as: "withdraw"
   get "users/likes" => "users/users#likes", as: "likes"
+  get "search" => "users/searches#search"
   scope module: :users do
     resources :users, only: [:show, :edit, :update]
     resources :menus, only: [:new, :create, :index, :show, :edit, :update, :destroy] do

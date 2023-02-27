@@ -23,10 +23,10 @@
                 <%= link_to "会員一覧", admin_root_path, class:"nav-link text-dark" %>
               </li>
               <li>
-                <%= link_to "投稿一覧",  admin_posts_path, class:"nav-link text-dark" %>
+                <%= link_to "メニュー一覧",  admin_menus_path, class:"nav-link text-dark" %>
               </li>
               <li>
-                <%= link_to "メニュー一覧",  admin_menus_path, class:"nav-link text-dark" %>
+                <%= link_to "投稿一覧",  admin_posts_path, class:"nav-link text-dark" %>
               </li>
               <li>
                 <%= link_to "ジャンル一覧",  admin_genres_path, class:"nav-link text-dark" %>
@@ -68,16 +68,18 @@
           </div>
         </div>
       </nav>
-      <div class= "d-flex justify-content-end container">
-        <div class="search_form">
-          <%= form_with url: search_path, local: true, method: :get do |f| %>
-            <%= f.text_field :word %>
-            <%= f.select :range, options_for_select([['Menu'], ['Post']]) %>
-            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-            <%= f.submit "検索", class: "btn btn-primary" %>
-          <% end %>
+      <% if user_signed_in? %>
+        <div class= "d-flex justify-content-end container">
+          <div class="search_form">
+            <%= form_with url: search_path, local: true, method: :get do |f| %>
+              <%= f.text_field :word %>
+              <%= f.select :range, options_for_select([['Menu'], ['Post']]) %>
+              <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
+              <%= f.submit "検索", class: "btn btn-primary" %>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </header>
 
     <main class="mb-auto">
@@ -89,7 +91,7 @@
     <%= yield %>
     </main>
 
-    <footer class="bg-dark text-white pt-5 pb-4">
+     <footer class="bg-dark text-white pt-5 pb-4">
       <div class="container">
         <p class="text-center">&copy2023 Koshi</p>
       </div>
