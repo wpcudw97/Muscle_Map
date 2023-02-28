@@ -1,8 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col" style="margin-top:20px">
-     <h2 class="d-flex justify-content-between mx-auto">メニュー一覧</h2>
-
+     <div class="d-flex justify-content-between mx-auto">
+       <h2>メニュー一覧</h2>
+        <h5>
+          <%= form_tag menus_path, method: :get, class: 'boards__searchForm' do %>
+            タグ検索:
+            <%= select_tag :tag_id,
+              options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                {
+                  prompt: 'タグで絞り込み検索',
+                  onchange: 'submit(this.form);'
+                }
+            %>
+          <% end %>
+        </h5>
+      </div>
     <table class='table'>
       <thead>
         <tr class="table-secondary">
@@ -17,7 +30,7 @@
             <td><%= link_to menu.title, menu_path(menu.id) %></td>
             <td><%= menu.genre.name %></td>
             <td>
-              <% @menu.tags.each do |tag| %>
+              <% menu.tags.each do |tag| %>
                 <%= tag.name %>
               <% end %>
             </td>

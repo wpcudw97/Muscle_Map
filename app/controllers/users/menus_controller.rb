@@ -2,6 +2,7 @@ class Users::MenusController < ApplicationController
 
   def index
     @menus = Menu.all
+    @menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus : Menu.all
   end
 
   def show

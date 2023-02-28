@@ -26,14 +26,17 @@
         </div>
 
         <div class="form-group">
-          <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-            <div>
+          <%= f.label :tag, "タグ" %>
+           <div class="d-flex justify-content-space-between">
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
               <%= tag.label do %>
+              <div style="margin-left:20px">
                 <%= tag.check_box %>
-                 <%= tag.text %>
+                <%= tag.text %>
+              </div>
               <% end %>
-             </div>
-           <% end %>
+            <% end %>
+          </div>
         </div>
 
         <div style="margin-top:30px">

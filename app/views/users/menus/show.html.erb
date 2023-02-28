@@ -4,9 +4,9 @@
 
       <h2 class="mx-auto" style="margin-top:20px"><%= @menu.title %></h2>
       <p>
-        ジャンル名:<%= @menu.genre.name %>
-        <span style="margin-left:20px"><%= @menu.created_at.strftime('%Y/%m/%d') %></span>
-        <span>
+        ジャンル:<%= @menu.genre.name %>
+        <span style="margin-left:5px">作成日:<%= @menu.created_at.strftime('%Y/%m/%d') %></span>
+        <span style="margin-left:5px">タグ:
           <% @menu.tags.each do |tag| %>
             <%= tag.name %>
           <% end %>
