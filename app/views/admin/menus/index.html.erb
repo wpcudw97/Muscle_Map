@@ -12,6 +12,7 @@
           <th>メニューID</th>
           <th>トレーニング名</th>
           <th>ジャンル</th>
+          <th>タグ</th>
           <th></th>
         </tr>
       </thead>
@@ -21,6 +22,11 @@
             <td><%= menu.id %></td>
             <td><%= link_to menu.title, admin_menu_path(menu.id) %></td>
             <td><%= menu.genre.name %></td>
+            <td>
+              <% @menu.tags.each do |tag| %>
+                <%= tag.name %>
+              <% end %>
+            </td>
             <td><%= link_to "編集する", edit_admin_menu_path(menu.id), class:"btn btn-success" %></td>
         <% end %>
       </tbody>

@@ -2,6 +2,7 @@ class Admin::MenusController < ApplicationController
 
   def index
     @menus = Menu.all
+    @menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus : Menu.all
   end
 
   def new
@@ -11,6 +12,7 @@ class Admin::MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
     @menu.save
+    flash[:notice] = "メニューを作成しました！"
     redirect_to admin_menus_path
   end
 
@@ -41,7 +43,7 @@ class Admin::MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:genre_id, :title, :body, :menu_image)
+    params.require(:menu).permit(:genre_id, :title, :body, :menu_image, tag_ids: [])
   end
 
 end

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   patch "users/:id/withdraw" => "users/users#withdraw", as: "withdraw"
   get "users/likes" => "users/users#likes", as: "likes"
   get "search" => "users/searches#search"
+  get "tag_search" => "users/tag_searches#tag_search"
   scope module: :users do
     resources :users, only: [:show, :edit, :update]
     resources :menus, only: [:new, :create, :index, :show, :edit, :update, :destroy] do

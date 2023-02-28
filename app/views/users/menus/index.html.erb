@@ -8,6 +8,7 @@
         <tr class="table-secondary">
           <th>トレーニング名</th>
           <th>ジャンル</th>
+          <th>タグ</th>
         </tr>
       </thead>
       <tbody>
@@ -15,6 +16,11 @@
           <tr>
             <td><%= link_to menu.title, menu_path(menu.id) %></td>
             <td><%= menu.genre.name %></td>
+            <td>
+              <% @menu.tags.each do |tag| %>
+                <%= tag.name %>
+              <% end %>
+            </td>
         <% end %>
       </tbody>
     </table>

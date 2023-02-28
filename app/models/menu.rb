@@ -1,5 +1,7 @@
 class Menu < ApplicationRecord
   has_many :comments, dependent: :destroy
+  has_many :menu_tags, dependent: :destroy
+  has_many :tags, through: :menu_tags
   belongs_to :genre
   has_one_attached :menu_image
 

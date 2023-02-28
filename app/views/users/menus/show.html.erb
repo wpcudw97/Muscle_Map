@@ -6,6 +6,11 @@
       <p>
         ジャンル名:<%= @menu.genre.name %>
         <span style="margin-left:20px"><%= @menu.created_at.strftime('%Y/%m/%d') %></span>
+        <span>
+          <% @menu.tags.each do |tag| %>
+            <%= tag.name %>
+          <% end %>
+        </span>
       </p>
 
       <div><%= image_tag @menu.get_menu_image(500,600) %></div>
