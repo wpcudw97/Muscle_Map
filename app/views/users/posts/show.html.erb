@@ -1,14 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-8">
-      <% if @evaluation.errors.any? %>
-        <%= @evaluation.errors.count %>件のエラーが発生しました
-        <ul>
-          <% @evaluation.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
 
       <h2 style="margin-top:20px"><%= @post.title %></h2>
       <p>
@@ -52,6 +44,7 @@
       <div class="article" style="margin-top:20px">
         <h4 style="margin-bottom:20px">コメント</h4>
         <%= form_with model: [@post, @evaluation], local: true do |f| %>
+
           <%= f.text_area :evaluation, placeholder: "コメントする", class:"form-control", rows:"2" %>
           <div style="margin-top:10px">
             <%= f.submit '送信', class:"btn btn-sm btn-primary" %>

@@ -1,5 +1,13 @@
 <div class="container">
   <div class="row">
+    <% if @comment.errors.any? %>
+      <%= @comment.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+    <% end %>
     <div class="col-7">
 
       <h2 class="mx-auto" style="margin-top:20px"><%= @menu.title %></h2>
