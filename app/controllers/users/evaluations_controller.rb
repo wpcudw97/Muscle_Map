@@ -1,6 +1,7 @@
 class Users::EvaluationsController < ApplicationController
 
   def create
+    @post = Post.find(params[:post_id])
     @evaluation = Evaluation.new(evaluation_params)
     @evaluation.save
     flash[:notice] = "コメントしました！"

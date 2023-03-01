@@ -1,6 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-4" style="margin-top:20px">
+    <div class="col-6" style="margin-top:20px">
+      <% if @post.errors.any? %>
+        <%= @post.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
     <h3>投稿する</h3>
       <%= form_with model: @post  do |f| %>
 
@@ -11,7 +20,7 @@
 
         <div class="form-group">
           <h5 class="mb-3">本文</h5>
-          <%= f.text_area :body, class:"form-control", style:"width:70%", rows:"3", id:"body"%>
+          <%= f.text_area :body, class:"form-control", style:"width:70%", rows:"8", id:"body"%>
         </div>
 
         <div class="form-group">
@@ -26,7 +35,7 @@
       <% end %>
     </div>
 
-    <div class="col-8">
+    <div class="col-6">
       <h3>投稿一覧</h3>
       <table class="table table-hover table-inverse">
       <thead>
