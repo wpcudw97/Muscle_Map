@@ -1,6 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col">
+
+       <% if @evaluation.errors.any? %>
+        <%= @evaluation.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @evaluation.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <div class="article" style="margin-top:20px">
         <h5 style="margin-bottom:20px">コメント編集</h5>
 

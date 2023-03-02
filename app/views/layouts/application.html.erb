@@ -12,56 +12,56 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <%= link_to "Muscle_Map", root_path, class:"navbar-brand" %>
+         <%= link_to "Muscle_Map", root_path, class:"navbar-brand"%>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
-              <li>
-                <%= link_to "会員一覧", admin_root_path, class:"nav-link text-dark" %>
+              <li class="nav-item" style="margin-left:20px">
+                <i class="fas fa-address-card"></i><%= link_to "会員一覧", admin_root_path, class:"text-dark"%>
               </li>
-              <li>
-                <%= link_to "メニュー一覧",  admin_menus_path, class:"nav-link text-dark" %>
+              <li class="nav-item" style="margin-left:20px">
+                <i class="fa fa-dumbbell"></i><%= link_to "メニュー一覧",  admin_menus_path, class:"text-dark" %>
               </li>
-              <li>
-                <%= link_to "投稿一覧",  admin_posts_path, class:"nav-link text-dark" %>
+              <li class="nav-item" style="margin-left:20px">
+                <i class="fas fa-paper-plane"></i><%= link_to "投稿一覧",  admin_posts_path, class:"text-dark" %>
               </li>
-              <li>
-                <%= link_to "ジャンル一覧",  admin_genres_path, class:"nav-link text-dark" %>
+              <li class="nav-item" style="margin-left:20px">
+                <i class="fas fa-list"></i><%= link_to "ジャンル一覧",  admin_genres_path, class:"text-dark" %>
               </li>
-              <li>
-                <%= link_to "ログアウト", destroy_admin_session_path, method:"delete", class:"nav-link text-dark" %>
+              <li class="nav-item" style="margin-left:20px">
+                <i class="fas fa-sign-out-alt"></i><%= link_to "ログアウト", destroy_admin_session_path, method:"delete", class:"text-dark" %>
               </li>
             <% elsif user_signed_in? %>
               <li class="nav-item">
-                <%= link_to "マイページ", user_path(current_user.id), class:"nav-link text-dark" %>
+                <i class="fas fa-address-card"></i><%= link_to "マイページ", user_path(current_user.id), class:"text-dark" %>
               </li>
-              <li class="nav-item">
-                <%= link_to "トレーニング", menus_path, class:"nav-link text-dark" %>
+              <li class="nav-item" style="margin-left:20px">
+                <i class="fa fa-dumbbell"></i><%= link_to "トレーニング", menus_path, class:"text-dark" %>
               </li>
-              <li class="nav-item">
-                <%= link_to "投稿一覧", posts_path, class:"nav-link text-dark" %>
+              <li class="nav-item" style="margin-left:20px">
+                <i class="fas fa-paper-plane"></i><%= link_to "投稿一覧", posts_path, class:"text-dark" %>
               </li>
-              <li class="nav-item">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link text-dark" %>
+              <li class="nav-item" style="margin-left:20px">
+                <i class="fas fa-sign-out-alt"></i><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-dark" %>
               </li>
             <% else %>
               <li class="nav-item">
-                <%= link_to "アバウト", about_path, class:"nav-link text-dark" %>
+                <i class="fas fa-comment-dots"></i><%= link_to "アバウト", about_path, class:"text-dark" %>
               </li>
-              <li class="nav-item">
-                <%= link_to "トレーニング", menus_path, class:"nav-link text-dark" %>
+              <li class="nav-item" style="margin-left:20px">
+                <i class="fa fa-dumbbell"></i><%= link_to "トレーニング", menus_path, class:"text-dark" %>
               </li>
-              <li class="nav-item">
-                <%= link_to "投稿一覧", posts_path, class:"nav-link text-dark" %>
+              <li class="nav-item" style="margin-left:20px">
+                <i class="fas fa-paper-plane"></i><%= link_to "投稿一覧", posts_path, class:"text-dark" %>
               </li>
-              <li class="nav-item">
-                <%= link_to "新規登録", new_user_registration_path, class:"nav-link text-dark" %>
+              <li class="nav-item" style="margin-left:20px">
+                <i class="fa fa-user-plus"></i><%= link_to "新規登録", new_user_registration_path, class:"text-dark" %>
               </li>
-              <li class="nav-item">
-                <%= link_to "ログイン", new_user_session_path, class:"nav-link text-dark" %>
+              <li class="nav-item" style="margin-left:20px">
+                <i class="fas fa-sign-in-alt"></i><%= link_to "ログイン", new_user_session_path, class:"text-dark" %>
               </li>
             <% end %>
             </ul>

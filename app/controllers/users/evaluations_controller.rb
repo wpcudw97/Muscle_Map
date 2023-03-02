@@ -3,10 +3,15 @@ class Users::EvaluationsController < ApplicationController
 
   def create
     @evaluation = Evaluation.new(evaluation_params)
-    @evaluation.save
-    @post = Post.find(params[:post_id])
-    flash[:notice] = "コメントしました！"
-    redirect_to post_path(@evaluation.post)
+    if @evaluation.save
+      flash[:notice] = "コメントしました！"
+      redirect_to post_path(@evaluation.post)
+    else
+      @post = Post.find(params[:post_id])
+      @user = @post.user
+      @evaluations = @post.evaluations.includes(:user)
+      render "users/posts/show"
+    end
   end
 
   def edit
@@ -17,9 +22,12 @@ class Users::EvaluationsController < ApplicationController
   def update
     @post = Post.find(params[:post_id])
     @evaluation = Evaluation.find(params[:id])
-    @evaluation.update(evaluation_params)
-    flash[:notice] = "コメント内容を変更しました！"
-    redirect_to post_path(@evaluation.post)
+    if @evaluation.update(evaluation_params)
+      flash[:notice] = "コメント内容を変更しました！"
+      redirect_to post_path(@evaluation.post)
+    else
+      render :edit
+    end
   end
 
 
