@@ -2,9 +2,9 @@ class Users::EvaluationsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @post = Post.find(params[:post_id])
     @evaluation = Evaluation.new(evaluation_params)
     @evaluation.save
+    @post = Post.find(params[:post_id])
     flash[:notice] = "コメントしました！"
     redirect_to post_path(@evaluation.post)
   end

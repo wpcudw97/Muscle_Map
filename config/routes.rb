@@ -37,10 +37,8 @@ Rails.application.routes.draw do
     resources :menus, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resources :comments, only: [:create, :edit, :update, :destroy]
     end
-    resources :posts, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
-      resource :favorites, only: [:create, :destroy]
-      resources :evaluations, only: [:create, :edit, :update, :destroy]
-    end
+          resources :evaluations, only: [:create, :edit, :update, :destroy]
+
   end
 
 end
