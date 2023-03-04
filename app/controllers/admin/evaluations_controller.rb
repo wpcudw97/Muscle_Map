@@ -8,9 +8,12 @@ class Admin::EvaluationsController < ApplicationController
   def update
     @post = Post.find(params[:post_id])
     @evaluation = Evaluation.find(params[:id])
-    @evaluation.update(evaluation_params)
-    flash[:notice] = "コメント内容を変更しました！"
-    redirect_to admin_post_path(@evaluation.post)
+    if @evaluation.update(evaluation_params)
+      flash[:notice] = "コメント内容を変更しました！"
+      redirect_to admin_post_path(@evaluation.post)
+    else
+      render :edit
+    end
   end
 
   def destroy

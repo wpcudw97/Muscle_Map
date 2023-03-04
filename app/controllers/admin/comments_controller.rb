@@ -8,9 +8,12 @@ class Admin::CommentsController < ApplicationController
   def update
     @menu = Menu.find(params[:menu_id])
     @comment = Comment.find(params[:id])
-    @comment.update(comment_params)
-    flash[:notice] = "コメント内容を変更しました！"
-    redirect_to  admin_menu_path(@comment.menu)
+    if @comment.update(comment_params)
+      flash[:notice] = "コメント内容を変更しました！"
+      redirect_to  admin_menu_path(@comment.menu)
+    else
+      render :edit
+    end
   end
 
   def destroy
