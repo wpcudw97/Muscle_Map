@@ -33,7 +33,7 @@
 
       <div class="row mb-3">
         <div class="col-sm-2 col-form-label"><%= f.label :date_of_birth, "生年月日" %></div>
-        <div class="col-sm-10"><%= f.date_select :date_of_birth, {start_year: 1950, end_year: 2023, include_blank: true, use_two_digit_numbers: true}, {class: "input-tab birthday-select"} %></div>
+        <div class="col-sm-10"><%= f.date_select :date_of_birth, {start_year: 1950, end_year: 2023, include_blank: true, use_two_digit_numbers: true}, {class:"input-tab birthday-select", style:"width:22%"} %></div>
       </div>
 
       <div class="row mb-3">

@@ -1,13 +1,26 @@
 <div class="container">
   <div class="row">
     <div class="col" style="margin-top:20px">
-    <h3>ジャンル一覧・追加</h3>
+
+      <% if @genre.errors.any? %>
+        <%= @genre.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @genre.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+    <h2>ジャンル一覧・追加</h2>
     <%= form_with model: @genre, url: admin_genres_path do |f| %>
 
-      <div class="form-group row mb-3" style="margin-top:30px">
-        <%= f.label :name, "ジャンル名", class: "col-sm-3 col-form-label" %>
-        <%= f.text_field :name, placeholder: "ジャンル名", id:"admin_genre_name" %>
-        <span style="margin-left:20px"><%= f.submit '新規登録', class:"btn btn-success" %></span>
+      <div class="form-group" style="margin-top:30px">
+        <%= f.label :name, "ジャンル名" %>
+        <%= f.text_field :name, placeholder: "ジャンル名", class:"form-control name", id:"admin_genre_name" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit '新規登録', class:"btn btn-primary" %>
       </div>
 
     <% end %>

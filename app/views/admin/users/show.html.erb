@@ -1,55 +1,64 @@
 <div class="container">
-  <h3><%= @user.name %>さんの会員詳細</h3>
-
   <div class="row">
     <div class="col" style="margin-top:20px">
+      <h2 style="margin-bottom:20px"><%= @user.name %>さんの会員詳細</h2>
+
       <%= form_with model: @user, url: admin_user_path do |f| %>
 
-        <div class="form-group">
-          <%= f.label :id, "会員ID", class: "col-sm-4 col-form-label" %>
-          <%= @user.id %>
-        </div>
+        <table class="table table-borderless">
+          <tr>
+            <th><%= f.label :id, "会員ID" %></th>
+            <td> <%= @user.id %></td>
+          </tr>
 
-        <div class="form-group">
-          <%= f.label :name, "氏名", class: "col-sm-4 col-form-label" %>
-          <%= @user.name %>
-        </div>
+          <tr>
+            <th><%= f.label :name, "氏名" %></th>
+            <td><%= @user.name %></td>
+          </tr>
 
-        <div class="form-group">
-          <%= f.label :name_kana, "フリガナ", class: "col-sm-4 col-form-label" %>
-          <%= @user.name_kana %>
-        </div>
+          <tr>
+            <th><%= f.label :name_kana, "フリガナ" %></th>
+            <td><%= @user.name_kana %></td>
+          </tr>
 
-        <div class="form-group">
-          <%= f.label :date_of_birth, "生年月日", class: "col-sm-4 col-form-label" %>
-          <%= @user.date_of_birth.strftime('%Y/%m/%d') %>
-        </div>
+          <tr>
+            <th><%= f.label :date_of_birth, "生年月日" %></th>
+            <td><%= @user.date_of_birth.strftime('%Y/%m/%d') %></td>
+          </tr>
 
-        <div class="form-group">
-          <%= f.label :sex_select, "性別", class: "col-sm-4 col-form-label" %>
-          <%= @user.sex_select_i18n %>
-        </div>
+          <tr>
+            <th><%= f.label :sex_select, "性別" %></th>
+            <td><%= @user.sex_select_i18n %></td>
+          </tr>
 
-        <div class="form-group">
-          <%= f.label :introduction, "自己紹介", class: "col-sm-4 col-form-label" %>
-          <%= @user.introduction %>
-        </div>
+          <tr>
+            <th><%= f.label :introduction, "自己紹介" %></th>
+            <td> <%= @user.introduction %></td>
+          </tr>
 
-        <div class="form-group">
-          <%= f.label :email, "メールアドレス", class: "col-sm-4 col-form-label" %>
-          <%= @user.email %>
-        </div>
+          <tr>
+            <th><%= f.label :email, "メールアドレス" %></th>
+            <td><%= @user.email %></td>
+          </tr>
 
-        <div class="form-group">
-          <%= f.label :is_deleted, "会員ステータス", class: "col-sm-4 col-form-label" %>
-          <%= @user.is_deleted %>
-        </div>
+          <tr>
+            <th> <%= f.label :is_deleted, "会員ステータス" %></th>
+            <td><%= @user.is_deleted %></td>
+          </tr>
 
-        <div class="d-flex justify-content-around">
-          <%= link_to "編集する",  edit_admin_user_path(@user.id), class: "btn btn-success" %>
-        </div>
+          <tr>
+            <td><%= link_to "編集する", edit_admin_user_path(@user.id), class:"btn btn-success" %></td>
+            <td></td>
+          </tr>
+
+        </table>
 
       <% end %>
+
+
+
     </div>
   </div>
 </div>
+
+

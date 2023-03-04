@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-7">
 
-      <h2 class="mx-auto" style="margin-top:20px"><%= @menu.title %></h2>
+      <h2 style="margin-top:20px"><%= @menu.title %></h2>
       <p>
         ジャンル:<%= @menu.genre.name %>
         <span style="margin-left:5px">作成日:<%= @menu.created_at.strftime('%Y/%m/%d') %></span>
@@ -20,9 +20,9 @@
 
     <div class="col-5">
       <div class="article" style="margin-top:20px">
-        <h4 style="margin-bottom:20px">コメント一覧</h4>
+        <h4>コメント一覧</h4>
 
-        <table class="table">
+        <table class="table" style="margin-top:20px">
           <thead>
             <tr class="table-secondary">
               <th>ユーザ名</th>

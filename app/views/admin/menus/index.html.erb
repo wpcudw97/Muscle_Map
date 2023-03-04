@@ -1,36 +1,37 @@
 <div class="container">
   <div class="row">
     <div class="col" style="margin-top:20px">
-     <h2 class="d-flex justify-content-between mx-auto">
-      メニュー一覧
-      <%= link_to "メニューを追加する", new_admin_menu_path, class:"btn btn-primary" %>
-    </h2>
 
-    <table class='table'>
-      <thead>
-        <tr class="table-secondary">
-          <th>メニューID</th>
-          <th>トレーニング名</th>
-          <th>ジャンル</th>
-          <th>タグ</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @menus.each do |menu| %>
-          <tr>
-            <td><%= menu.id %></td>
-            <td><%= link_to menu.title, admin_menu_path(menu.id) %></td>
-            <td><%= menu.genre.name %></td>
-            <td>
-              <% menu.tags.each do |tag| %>
-                <%= tag.name %>
-              <% end %>
-            </td>
-            <td><%= link_to "編集する", edit_admin_menu_path(menu.id), class:"btn btn-success" %></td>
-        <% end %>
-      </tbody>
-    </table>
+      <h2 class="d-flex justify-content-between mx-auto">
+        メニュー一覧
+        <%= link_to "メニューを追加する", new_admin_menu_path, class:"btn btn-primary" %>
+      </h2>
+
+      <table class="table" style="margin-top:20px">
+        <thead>
+          <tr class="table-secondary">
+            <th>メニューID</th>
+            <th>トレーニング名</th>
+            <th>ジャンル</th>
+            <th>タグ</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @menus.each do |menu| %>
+            <tr>
+              <td><%= menu.id %></td>
+              <td><%= link_to menu.title, admin_menu_path(menu.id) %></td>
+              <td><%= menu.genre.name %></td>
+              <td>
+                <% menu.tags.each do |tag| %>
+                  <%= tag.name %>
+                <% end %>
+              </td>
+              <td><%= link_to "編集する", edit_admin_menu_path(menu.id), class:"btn btn-success" %></td>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
