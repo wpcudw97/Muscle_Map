@@ -11,9 +11,12 @@ class Admin::MenusController < ApplicationController
 
   def create
     @menu = Menu.new(menu_params)
-    @menu.save
-    flash[:notice] = "メニューを作成しました！"
-    redirect_to admin_menus_path
+    if @menu.save
+      flash[:notice] = "メニューを作成しました！"
+      redirect_to admin_menus_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -28,9 +31,12 @@ class Admin::MenusController < ApplicationController
 
   def update
     @menu = Menu.find(params[:id])
-    @menu.update(menu_params)
-    flash[:notice] = "メニュー内容を更新しました！"
-    redirect_to admin_menu_path(@menu)
+    if @menu.update(menu_params)
+      flash[:notice] = "メニュー内容を更新しました！"
+      redirect_to admin_menu_path(@menu)
+    else
+      render :edit
+    end
   end
 
   def destroy

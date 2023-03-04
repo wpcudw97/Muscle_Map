@@ -14,7 +14,7 @@
         <% @posts.each do |post| %>
           <tr>
             <td>
-              <%= link_to root_path do %>
+              <%= link_to admin_user_path(user.id) do %>
                 <p style="margin-left:10px"><%= image_tag post.user.get_profile_image(80,80) %></p>
                 <p><%= post.user.name %>さん</p>
               <% end %>

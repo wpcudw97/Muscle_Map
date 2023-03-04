@@ -1,10 +1,17 @@
 class Users::CommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.save
-    flash[:notice] = "コメントしました！"
-    redirect_to menu_path(@comment.menu)
+    if @comment.save
+      flash[:notice] = "コメントしました！"
+      redirect_to menu_path(@comment.menu)
+    else
+      @menus = Menu.all
+      @menu = Menu.find(params[:menu_id])
+      @comments = @menu.comments.includes(:user)
+      render "users/menus/show"
+    end
   end
 
   def edit
@@ -15,9 +22,12 @@ class Users::CommentsController < ApplicationController
   def update
     @menu = Menu.find(params[:menu_id])
     @comment = Comment.find(params[:id])
-    @comment.update(comment_params)
-    flash[:notice] = "コメント内容を変更しました！"
-    redirect_to menu_path(@comment.menu)
+    if @comment.update(comment_params)
+      flash[:notice] = "コメント内容を変更しました！"
+      redirect_to menu_path(@comment.menu)
+    else
+      render :edit
+    end
   end
 
   def destroy

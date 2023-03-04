@@ -2,8 +2,12 @@ class Menu < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :menu_tags, dependent: :destroy
   has_many :tags, through: :menu_tags
-  belongs_to :genre
+  belongs_to :genre, optional: true
   has_one_attached :menu_image
+
+  validates :genre_id, presence: true
+  validates :title, presence: true, length: { in: 1..20 }
+  validates :body, presence: true, length: { in: 1..120 }
 
   def get_menu_image(width,height)
     unless menu_image.attached?
