@@ -11,7 +11,7 @@
         </ul>
       <% end %>
 
-      <h2 class="mx-auto" style="margin-top:20px">メニュー作成</h2>
+      <h2 style="margin-top:20px">メニュー作成</h2>
 
       <%= form_with model: @menu, url: admin_menus_path do |f| %>
 
@@ -40,16 +40,16 @@
            <div class="d-flex justify-content-space-between">
             <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
               <%= tag.label do %>
-              <div style="margin-left:20px">
-                <%= tag.check_box %>
-                <%= tag.text %>
-              </div>
+                <div style="margin-left:20px">
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                </div>
               <% end %>
             <% end %>
           </div>
         </div>
 
-        <div style="margin-top:30px">
+        <div style="margin-top:20px">
           <%= f.submit "投稿する", class:"btn btn-success" %>
         </div>
 

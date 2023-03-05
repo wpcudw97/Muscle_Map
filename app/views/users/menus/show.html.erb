@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-7">
+    <div class="col-7" style="margin-top:20px">
 
       <% if @comment.errors.any? %>
         <%= @comment.errors.count %>件のエラーが発生しました
@@ -11,7 +11,7 @@
         </ul>
       <% end %>
 
-      <h2 class="mx-auto" style="margin-top:20px"><%= @menu.title %></h2>
+      <h2><%= @menu.title %></h2>
       <p>
         ジャンル:<%= @menu.genre.name %>
         <span style="margin-left:5px">作成日:<%= @menu.created_at.strftime('%Y/%m/%d') %></span>
@@ -52,7 +52,7 @@
 
         <h4>コメント一覧</h4>
 
-        <table class="table">
+        <table class="table table-hover">
           <thead>
             <tr class="table-secondary">
               <th>ユーザ名</th>

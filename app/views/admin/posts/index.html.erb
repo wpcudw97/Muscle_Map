@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col" style="margin-top:20px">
-      <h3>投稿一覧</h3>
-      <table class="table table-hover table-inverse">
+      <h2>投稿一覧</h2>
+
+      <table class="table table-hover table-sm" style="margin-top:20px">
       <thead>
-        <tr>
+        <tr class="table-secondary">
           <th>ユーザ</th>
           <th>タイトル</th>
           <th></th>
@@ -17,13 +18,13 @@
               <p style="margin-left:10px"><%= image_tag post.user.get_profile_image(80,80) %></p>
               <p><%= post.user.name %>さん</p>
             </td>
-            <td><%= post.title %></td>
-            <td><%= link_to "詳細へ", admin_post_path(post.id) %></td>
+            <td style="vertical-align: middle"><%= post.title %></td>
+            <td style="vertical-align: middle"><%= link_to "詳細へ", admin_post_path(post.id) %></td>
           </tr>
         <% end %>
       </tbody>
       </table>
-    </div>
 
+    </div>
   </div>
 </div>

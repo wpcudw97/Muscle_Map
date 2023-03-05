@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col" style="margin-top:20px">
 
       <% if @post.errors.any? %>
         <%= @post.errors.count %>件のエラーが発生しました
@@ -13,7 +13,7 @@
 
       <h2>投稿編集</h2>
       <%= form_with model: @post, url: admin_post_path(@post) do |f| %>
-        <div class="form-group">
+        <div class="form-group" style="margin-top:20px">
           <%= f.label :post_image, "画像" %>
           <%= f.file_field :post_image, accept: "image/*" , class:"form-control-file user_image" , id:"user_profile_image"%>
         </div>

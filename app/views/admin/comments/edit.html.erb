@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col" style="margin-top:20px">
 
       <% if @comment.errors.any? %>
         <%= @comment.errors.count %>件のエラーが発生しました
@@ -11,7 +11,7 @@
         </ul>
       <% end %>
 
-      <h2 style="margin-top:20px">コメント編集</h2>
+      <h2>コメント編集</h2>
 
       <%= form_with model: [@menu, @comment], url: admin_menu_comment_path do |f| %>
 
@@ -23,7 +23,6 @@
         </div>
 
       <% end %>
-
 
     </div>
   </div>
