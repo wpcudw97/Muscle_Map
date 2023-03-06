@@ -1,0 +1,2 @@
+module Users::WeightManagementsHelper
+end
