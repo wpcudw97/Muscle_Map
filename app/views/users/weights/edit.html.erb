@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col" style="margin-top:20px">
+
+      <% if @weight.errors.any? %>
+        <%= @weight.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @weight.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <h2>体重編集</h2>
+
+
+    </div>
+  </div>
+</div>

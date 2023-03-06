@@ -41,7 +41,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :evaluations, only: [:create, :edit, :update, :destroy]
     end
-    resources :weight_managements, only: [:create, :index, :edit, :update, :destroy]
+    resources :weights, only: [:create, :index, :edit, :update, :destroy]
   end
 
 end

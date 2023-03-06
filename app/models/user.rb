@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :evaluations, dependent: :destroy
-  has_many :weight_managements, dependent: :destroy
+  has_many :weights, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 10 }
   validates :name_kana, presence: true
