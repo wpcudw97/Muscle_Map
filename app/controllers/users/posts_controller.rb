@@ -34,10 +34,12 @@ class Users::PostsController < ApplicationController
   end
 
   def edit
+    is_matching_login_user
     @post = Post.find(params[:id])
   end
 
   def update
+    is_matching_login_user
     @post = Post.find(params[:id])
     if @post.update(post_params)
       flash[:notice] = "登録内容を更新しました！"
@@ -59,6 +61,13 @@ class Users::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :post_image, :rate)
+  end
+
+  def is_matching_login_user
+    user_id = params[:id].to_i
+    unless user_id == current_user.id
+      redirect_to posts_path
+    end
   end
 
 end
