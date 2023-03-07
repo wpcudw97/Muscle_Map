@@ -15,6 +15,7 @@ class Users::WeightsController < ApplicationController
 
   def index
     @weights = Weight.all
+    @weights = current_user.weights
     @weight = Weight.new
     @user = User.where(params[:id])
     @user = current_user
@@ -45,7 +46,7 @@ class Users::WeightsController < ApplicationController
   private
 
   def weight_params
-    params.require(:weight).permit(:user_id, :weight)
+    params.require(:weight).permit(:user_id, :weight).merge(user_id: current_user.id)
   end
 
 end

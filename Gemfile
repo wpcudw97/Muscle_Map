@@ -60,3 +60,5 @@ gem 'net-smtp'
 gem 'kaminari','~> 1.2.1'
 gem 'enum_help'
 gem "font-awesome-rails"
+gem "chartkick"
+gem 'groupdate'

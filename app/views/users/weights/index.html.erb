@@ -24,6 +24,8 @@
 
     <div class="col-9" style="margin-top:20px">
 
+      <%= column_chart @weights.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group("date(created_at)").sum(:weight) %>
+
       <table class="table table-hover">
         <thead>
           <tr class="table-secondary">
