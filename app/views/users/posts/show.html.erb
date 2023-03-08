@@ -42,7 +42,9 @@
             </p>
           <% end %>
           <div>
-            <%= link_to '編集' , edit_post_path(@post.id) , class:"btn btn-success" %>
+            <% if user_signed_in? && current_user.id == @post.user_id %>
+              <%= link_to '編集' , edit_post_path(@post.id) , class:"btn btn-success" %>
+            <% end %>
           </div>
         </div>
 

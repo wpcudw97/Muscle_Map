@@ -10,12 +10,6 @@ class User < ApplicationRecord
   has_many :evaluations, dependent: :destroy
   has_many :weights, dependent: :destroy
 
-  validates :name, presence: true, length: { maximum: 10 }
-  validates :name_kana, presence: true
-  validates :date_of_birth, presence: true
-  validates :sex_select, presence: true
-  validates :introduction, length: { in: 0..30 }
-
   has_one_attached :profile_image
 
   enum sex_select: { #性別選択

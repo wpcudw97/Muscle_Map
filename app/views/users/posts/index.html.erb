@@ -51,7 +51,7 @@
           <tr>
             <td>
               <p style="margin-left:10px"><%= image_tag @user.get_profile_image(80,80) %></p>
-              <p><%= @user.name %>さん</p>
+              <p><%= post.user.name %>さん</p>
             </td>
             <td style="vertical-align: middle"><%= post.title %></td>
             <td style="vertical-align: middle"><%= link_to "詳細へ", post_path(post.id) %></td>
