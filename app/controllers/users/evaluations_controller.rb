@@ -1,5 +1,5 @@
 class Users::EvaluationsController < ApplicationController
-  before_action :authenticate_user!
+
 
   def create
     @evaluation = Evaluation.new(evaluation_params)
