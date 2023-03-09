@@ -1,4 +1,5 @@
 class Admin::EvaluationsController < ApplicationController
+  before_action :authenticate_admin!
 
   def edit
     @post = Post.find(params[:post_id])

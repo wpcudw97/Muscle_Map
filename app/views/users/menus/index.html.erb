@@ -16,27 +16,17 @@
           <% end %>
         </h5>
       </div>
-    <table class="table table-hover">
-      <thead>
-        <tr class="table-secondary">
-          <th>トレーニング名</th>
-          <th>ジャンル</th>
-          <th>タグ</th>
-        </tr>
-      </thead>
-      <tbody>
+      <div class="row">
         <% @menus.each do |menu| %>
-          <tr>
-            <td><%= link_to menu.title, menu_path(menu.id) %></td>
-            <td><%= menu.genre.name %></td>
-            <td>
-              <% menu.tags.each do |tag| %>
-                <%= tag.name %>
-              <% end %>
-            </td>
+        <div class="col-4">
+          <%= link_to menu_path(menu.id) do %>
+            <%= image_tag menu.get_menu_image(200,200) %>
+          <% end %>
+          <p><%= menu.title %></p>
+          <p>ジャンル名:<%= menu.genre.name %></p>
+        </div>
         <% end %>
-      </tbody>
-    </table>
+      </div>
     </div>
   </div>
 </div>

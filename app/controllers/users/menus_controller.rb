@@ -1,4 +1,5 @@
 class Users::MenusController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @menus = Menu.all
