@@ -7,7 +7,7 @@ class Menu < ApplicationRecord
 
   validates :genre_id, presence: true
   validates :title, presence: true, length: { in: 1..20 }
-  validates :body, presence: true, length: { in: 1..120 }
+  validates :body, presence: true, length: { in: 1..250 }
 
   def get_menu_image(width,height)
     unless menu_image.attached?

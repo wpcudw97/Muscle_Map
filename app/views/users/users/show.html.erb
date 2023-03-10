@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-5" style="margin-top:20px">
+    <div class="col-5 head-margin">
       <h2>マイページ</h2>
-      <h5 style="margin-top:20px">プロフィール</h5>
+      <h5 class="heading-margin">プロフィール</h5>
       <div class="user_profile">
         <%= link_to edit_user_path(@user.id), class:"btn btn-outline-secondary" do %>
           <%= image_tag @user.get_profile_image(520,300) %>
@@ -11,10 +11,10 @@
         <p><%= link_to "プロフィールを編集する", edit_user_path(@user.id) %></p>
         <% end %>
       </div>
-    </div>
+    </div><!-- /.head-margin -->
 
-    <div class="col-7" style="margin-top:100px">
-      <table class="table table-bordered text-center">
+    <div class="col-7 right-content">
+      <table class="table table-bordered text-center user-table">
         <tr>
           <th class="table-secondary">氏名</th>
     	    <td><%= @user.name %></td>
@@ -41,21 +41,21 @@
         </tr>
       </table>
 
-      <div style="margin-top:40px">
+      <div class="user-items">
         <h5>
-          <span class="mx-auto">投稿一覧</span>
-          <span style="margin-left:220px"><%= link_to "一覧を見る",  posts_path, class: "btn btn-primary d-grid gap-2 col-3 mx-auto" %></span>
+          <span>投稿一覧</span>
+          <span class="item-1"><%= link_to "一覧を見る",  posts_path, class: "btn btn-primary d-grid gap-2 col-3 mx-auto" %></span>
         </h5>
         <h5>
-          <span class="mx-auto">いいねした投稿</span>
-          <span style="margin-left:160px"><%= link_to "一覧を見る",  likes_path, class: "btn btn-primary d-grid gap-2 col-3 mx-auto" %></span>
+          <span>いいねした投稿</span>
+          <span class="item-2"><%= link_to "一覧を見る",  likes_path, class: "btn btn-primary d-grid gap-2 col-3 mx-auto"%></span>
         </h5>
         <h5>
-          <span class="mx-auto">体重管理</span>
-          <span style="margin-left:220px"><%= link_to "体重管理へ",  weights_path, class: "btn btn-primary d-grid gap-2 col-3 mx-auto" %></span><!-- pathの変更必要 -->
+          <span>体重管理</span>
+          <span class="item-3"><%= link_to "体重管理へ",  weights_path, class: "btn btn-primary d-grid gap-2 col-3 mx-auto"%></span>
+        </h5>
+      </div><!-- /.user-items -->
 
-        </h5>
-      </div>
-    </div>
+    </div><!-- /.right-content -->
   </div>
 </div>

@@ -14,8 +14,46 @@
  *= require_self
  */
 
-/*.top_bg {*/
-/* background-image: url('top.jpeg');*/
-/* background-size:cover;*/
-/* height: 660px;*/
-/*}*/
+/* 共通 */
+.head-margin {
+  margin-top: 20px;
+}
+
+.heading-margin {
+  margin-top: 20px;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+/* users/show */
+.user-table {
+  margin-top: 100px;
+}
+
+.user-items {
+  margin-top: 20px;
+}
+
+.item-1,
+.item-3 {
+  margin-left: 220px;
+}
+
+.item-2 {
+  margin-left: 160px;
+}
+
+/* users/edit */
+.profile_image {
+  margin-top: 50px;
+}
+
+.user-profile {
+  margin-top: 100px;
+}
+
+.unsubscribe-button {
+  margin-left: 20px;
+}

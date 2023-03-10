@@ -18,7 +18,7 @@
       </div>
       <div class="row">
         <% @menus.each do |menu| %>
-        <div class="col-4">
+        <div class="col">
           <%= link_to menu_path(menu.id) do %>
             <%= image_tag menu.get_menu_image(200,200) %>
           <% end %>
