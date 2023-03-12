@@ -1,28 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-3" style="margin-top:20px">
+    <div class="col-3 head-margin">
       <h2>体重管理</h2>
 
-      <div class="user_profile" style="margin-top:20px">
+      <div class="user_profile">
         <%= link_to user_path(@user.id), class:"btn btn-outline-secondary" do %>
           <%= image_tag @user.get_profile_image(200,200) %>
         <% end %>
+      <div><%= @user.name %>さん</div>
       </div>
 
       <%= form_with model: @weight, url: weights_path do |f| %>
 
-        <div class="form-group" style="margin-top:20px">
+        <div class="form-group weight-form">
           <%= f.label :weight, "体重を入力する" %>
           <%= f.number_field :weight, step: '0.1', class:"form-control weight", style:"width:225px", id:"weight" %>
         </div>
 
-        <div class="form-group" style="margin-top:20px">
+        <div class="form-group weight-form">
           <%= f.submit '体重登録', class:"btn btn-primary" %>
         </div>
 
     </div>
 
-    <div class="col-9" style="margin-top:20px">
+    <div class="col-9 head-margin">
 
       <%= column_chart @weights.where(created_at: 1.week.ago.beginning_of_day..Time.zone.now.end_of_day).group("date(created_at)").sum(:weight), width: "600px" %>
 
@@ -31,18 +32,17 @@
           <tr class="table-secondary">
             <th>日付</th>
             <th>体重</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
-          <% @weights.each do |weight| %>
+          <% @weights.last(4).each do |weight| %>
             <tr>
-              <td style="vertical-align: middle"><%= weight.created_at.strftime('%Y/%m/%d') %></td>
-              <td style="vertical-align: middle"><%= weight.weight %>kg</td>
               <td>
-                <%= link_to "編集する", edit_weight_path(weight.id), class:"btn btn-success" %>
-                <span style="margin-left:10px"><%= link_to "削除する", weight_path(weight.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-danger" %></span>
+                <%= link_to weight_path(weight.id) do %>
+                  <%= weight.created_at.strftime('%Y/%m/%d') %>
+                <% end %>
               </td>
+              <td><%= weight.weight %>kg</td>
             </tr>
           <% end %>
         </tbody>

@@ -20,7 +20,11 @@ class Users::WeightsController < ApplicationController
     @weight = Weight.new
     @user = User.where(params[:id])
     @user = current_user
+  end
 
+  def show
+    @weights = Weight.all
+    @weight = Weight.find(params[:id])
   end
 
   def edit

@@ -54,6 +54,34 @@
   margin-top: 100px;
 }
 
+.edit-unsubscribe-button {
+  margin-left: 20px;
+}
+
+/* uses/unsubscribe */
+.unsubscribe-content {
+  margin-top: 120px;
+  text-align: center;
+}
+
+.unsubscribe-text {
+  margin-top: 40px;
+}
+
+.unsubscribe-select-button {
+  margin-top: 40px;
+}
+
 .unsubscribe-button {
+  margin-left: 20px;
+}
+
+/* weight/index */
+.weight-form {
+  margin-top: 20px;
+}
+
+/* weight/show */
+.weight-button {
   margin-left: 20px;
 }

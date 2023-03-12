@@ -15,7 +15,7 @@
       <%= form_with model: @user, url: user_path(@user) do |f| %>
       <div class="profile_image">
         <%= image_tag @user.get_profile_image(300,300), class: "btn btn-outline-secondary" %>
-        <%= f.file_field :profile_image, accept: "image/*" , class:"form-control-file user_image" , id:"user_profile_image"%>
+        <%= f.file_field :profile_image, accept: "image/*", class:"form-control-file user_image" , id:"user_profile_image"%>
       </div>
     </div><!-- /.head-margin -->
 
@@ -61,7 +61,7 @@
 
       <div class="form-group d-flex justify-content-space-between">
         <%= f.submit '保存する' , class:"btn btn-success" %>
-        <div class="unsubscribe-button"><%= link_to '退会する', unsubscribe_path,  class: "btn btn-danger" %></div>
+        <div class="edit-unsubscribe-button"><%= link_to '退会する', unsubscribe_path,  class: "btn btn-danger" %></div>
       </div>
       <% end %>
     </div><!-- /.user-profile -->
