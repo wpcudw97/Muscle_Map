@@ -7,6 +7,32 @@
           other: "その他"
           no_answer: "回答しない"
 
+    activerecord:
+      attributes:
+        comment:
+          comment: "コメント"
+
+        evaluation:
+          evaluation: "コメント"
+
+        genre:
+          name: "ジャンル名"
+
+        menu:
+          genre_id: "ジャンル"
+          title: "トレーニング名"
+          body: "メニュー内容"
+
+        post:
+          title: "タイトル"
+          body: "本文"
+
+        user:
+          name: "氏名"
+          name_kana: "フリガナ"
+          date_of_birth: "生年月日"
+          sex_select: "性別"
+
     date:
       formats:
         default: "%Y/%m/%d"

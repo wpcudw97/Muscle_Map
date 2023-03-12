@@ -19,13 +19,15 @@
 
       <div class="row menu-content">
         <% @menus.each do |menu| %>
-        <div class="col">
-          <%= link_to menu_path(menu.id) do %>
-            <%= image_tag menu.get_menu_image(200,200) %>
-          <% end %>
-          <p><%= menu.title %></p>
-          <p>ジャンル名:<%= menu.genre.name %></p>
-        </div>
+          <div class="col">
+            <div class="menu-lists">
+              <%= link_to menu_path(menu.id) do %>
+                <%= image_tag menu.get_menu_image(200,200), class:"menu-image" %>
+              <% end %>
+              <p><%= menu.title %></p>
+              <p>ジャンル名:<%= menu.genre.name %></p>
+            </div><!-- /.menu-lists -->
+          </div>
         <% end %>
       </div><!-- /.menu-content -->
 

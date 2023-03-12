@@ -15,6 +15,23 @@
  */
 
 /* 共通 */
+/* application.html */
+.top-logo {
+  width: 30px;
+  height: 30px;
+}
+
+.nav-item {
+  margin-left:20px;
+}
+/*///////////////////*/
+
+/* エラーメッセージでレイアウトが崩れるのを防ぐ*/
+.field_with_errors {
+  display: contents;
+}
+/*///////////////////*/
+
 .head-margin {
   margin-top: 20px;
 }
@@ -101,6 +118,11 @@
   margin-left: 20px;
 }
 
+/* menus/index */
+.menu-lists {
+  text-align: center;
+}
+
 /* menus/show */
 .menu-item {
   margin-left: 5px;
@@ -108,6 +130,10 @@
 
 .menu-text {
   margin-top: 20px;
+}
+
+.menu-image {
+  border: solid 1px #000000;
 }
 
 /*menus/posts/submit */
@@ -120,8 +146,12 @@
   margin-left: 10px;
 }
 
+.post-image {
+  border: solid 1px #000000;
+}
+
 /* admin */
-/* genre/menus//post/edit */
+/* genre/menus/edit */
 .delete-button {
   margin-left: 10px;
 }

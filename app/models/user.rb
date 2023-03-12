@@ -24,6 +24,11 @@ class User < ApplicationRecord
     退会: true
   }
 
+  validates :name, presence: true
+  validates :name_kana, presence:true
+  validates :date_of_birth, presence:true
+  validates :sex_select, presence:true
+
   def get_profile_image(width,height)
   unless profile_image.attached?
     file_path = Rails.root.join('app/assets/images/No_image.jpeg')
