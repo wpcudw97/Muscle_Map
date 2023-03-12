@@ -30,7 +30,7 @@
 
          <div class="form-group text-center">
           <%= f.submit "保存する", class:"btn btn-success" %>
-          <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-danger", style:"margin-left:20px" %>
+          <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-danger delete-button" %>
         </div>
 
       <% end %>

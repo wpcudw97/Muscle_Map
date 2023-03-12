@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col" style="margin-top:20px">
-      <h2 style="margin-bottom:20px"><%= @user.name %>さんの会員詳細</h2>
+    <div class="col head-margin">
+      <h2><%= @user.name %>さんの会員詳細</h2>
 
       <%= form_with model: @user, url: admin_user_path do |f| %>
 
-        <table class="table table-borderless">
+        <table class="table table-borderless table-hover">
           <tr>
             <th><%= f.label :id, "会員ID" %></th>
             <td> <%= @user.id %></td>
@@ -55,9 +55,7 @@
 
       <% end %>
 
-
-
-    </div>
+    </div><!-- /.head-margin -->
   </div>
 </div>
 

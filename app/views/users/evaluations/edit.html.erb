@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col head-margin">
 
-       <% if @evaluation.errors.any? %>
+      <% if @evaluation.errors.any? %>
         <%= @evaluation.errors.count %>件のエラーが発生しました
         <ul>
           <% @evaluation.errors.full_messages.each do |message| %>

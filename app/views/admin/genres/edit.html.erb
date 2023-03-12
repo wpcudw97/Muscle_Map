@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col" style="margin-top:20px">
+    <div class="col head-margin">
 
       <% if @genre.errors.any? %>
         <%= @genre.errors.count %>件のエラーが発生しました
@@ -14,16 +14,18 @@
       <h2>ジャンル一覧・追加</h2>
       <%= form_with model: @genre, url: admin_genre_path do |f| %>
 
-        <div class="form-group" style="margin-top:20px">
+        <div class="form-group">
           <%= f.label :name, "ジャンル名" %>
           <%= f.text_field :name, class:"form-control name", id:"admin_genre_name" %>
         </div>
 
-        <div class="form-group" style="margin-top:20px">
+        <div class="form-group">
           <%= f.submit '変更を保存', class:"btn btn-success" %>
-          <%= link_to "削除する", admin_genre_path(@genre.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-danger" %>
+          <%= link_to "削除する", admin_genre_path(@genre.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-danger delete-button" %>
         </div>
+
       <% end %>
-    </div>
+
+    </div><!-- /.head-margin -->
   </div>
 </div>

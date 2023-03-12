@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col" style="margin-top:20px">
+    <div class="col head-margin">
 
       <% if @post.errors.any? %>
         <%= @post.errors.count %>件のエラーが発生しました
@@ -13,7 +13,8 @@
 
       <h2>投稿編集</h2>
       <%= form_with model: @post, url: admin_post_path(@post) do |f| %>
-        <div class="form-group" style="margin-top:20px">
+
+        <div class="form-group">
           <%= f.label :post_image, "画像" %>
           <%= f.file_field :post_image, accept: "image/*" , class:"form-control-file user_image" , id:"user_profile_image"%>
         </div>
@@ -30,10 +31,11 @@
 
          <div class="form-group text-center">
           <%= f.submit "保存する", class:"btn btn-success" %>
-          <%= link_to "削除する", admin_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-danger", style:"margin-left:20px" %>
+          <%= link_to "削除する", admin_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-danger delete-button" %>
         </div>
 
       <% end %>
-    </div>
+
+    </div><!-- /.head-margin -->
   </div>
 </div>

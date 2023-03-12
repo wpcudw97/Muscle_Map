@@ -1,30 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col" style="margin-top:20px">
+    <div class="col head-margin">
       <h2>投稿一覧</h2>
 
-      <table class="table table-hover table-sm" style="margin-top:20px">
-      <thead>
-        <tr class="table-secondary">
-          <th>ユーザ</th>
-          <th>タイトル</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @posts.each do |post| %>
-          <tr>
-            <td>
-              <p style="margin-left:10px"><%= image_tag post.user.get_profile_image(80,80) %></p>
-              <p><%= post.user.name %>さん</p>
-            </td>
-            <td style="vertical-align: middle"><%= post.title %></td>
-            <td style="vertical-align: middle"><%= link_to "詳細へ", admin_post_path(post.id) %></td>
+      <table class="table table-hover table-sm">
+        <thead>
+          <tr class="table-secondary">
+            <th>ユーザ</th>
+            <th>タイトル</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
+        </thead>
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td>
+                <p><%= image_tag post.user.get_profile_image(80,80) %></p>
+                <p><%= post.user.name %>さん</p>
+              </td>
+              <td style="vertical-align: middle"><%= post.title %></td>
+              <td style="vertical-align: middle"><%= link_to "詳細へ", admin_post_path(post.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
 
-    </div>
+    </div><!-- /.head-margin -->
   </div>
 </div>

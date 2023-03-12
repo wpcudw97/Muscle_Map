@@ -1,12 +1,12 @@
 <div class='container'>
   <div class='row'>
-    <div class="col">
+    <div class="col head-margin">
 
-      <h2 class="mx-auto" style="margin-top:20px">管理者ログイン</h2>
+      <h2>管理者ログイン</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-        <div class="form-group" style="margin-top:20px">
+        <div class="form-group">
           <%= f.label :email, "email" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
         </div>
@@ -16,12 +16,12 @@
           <%= f.password_field :password, autocomplete: "current-password", class:"form-control"%>
         </div>
 
-        <div class="form-group text-center" style="margin-top:50px">
+        <div class="form-group text-center">
           <%= f.submit "ログイン", class:"btn btn-primary" %>
         </div>
 
       <% end %>
 
-    </div>
+    </div><!-- /.head-margin -->
   </div>
 </div>
