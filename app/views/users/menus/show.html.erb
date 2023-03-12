@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-7" style="margin-top:20px">
+    <div class="col-7 head-margin">
 
       <% if @comment.errors.any? %>
         <%= @comment.errors.count %>件のエラーが発生しました
@@ -14,8 +14,8 @@
       <h2><%= @menu.title %></h2>
       <p>
         ジャンル:<%= @menu.genre.name %>
-        <span style="margin-left:5px">作成日:<%= @menu.created_at.strftime('%Y/%m/%d') %></span>
-        <span style="margin-left:5px">タグ:
+        <span class="menu-item">作成日:<%= @menu.created_at.strftime('%Y/%m/%d') %></span>
+        <span class="menu-item">タグ:
           <% @menu.tags.each do |tag| %>
             <%= tag.name %>
           <% end %>
@@ -23,59 +23,51 @@
       </p>
 
       <div><%= image_tag @menu.get_menu_image(500,600) %></div>
-      <div style="margin-top:20px"><%= safe_join(@menu.body.split("\n"),tag(:br)) %></div>
+      <div class="menu-text"><%= safe_join(@menu.body.split("\n"),tag(:br)) %></div>
 
-    </div>
+    </div><!-- /.head-margin -->
 
-    <div class="col-5">
-      <div class="article" style="margin-top:20px">
-        <h5>その他記事</h5>
-        <% @menus.shuffle.first(4).each do |menu| %>
-           <nav class="navbar">
-             <ul class="navbar-nav">
-               <li><%= link_to menu.title, menu_path(menu.id) %></li>
-             </ul>
-           </nav>
-        <% end %>
-      </div>
-
-      <div class="article" style="margin-top:20px">
-        <h5 style="margin-bottom:20px">コメント</h5>
-        <div>
-          <%= form_with model: [@menu, @comment], local: true do |f| %>
-            <%= f.text_area :comment, placeholder: "コメントする", class:"form-control", rows:"2" %>
-            <div style="margin-top:10px">
-              <%= f.submit "コメント", class:"btn btn-sm btn-primary" %>
-            </div>
-          <% end %>
-        </div>
-
-        <h4>コメント一覧</h4>
-
-        <table class="table table-hover">
-          <thead>
-            <tr class="table-secondary">
-              <th>ユーザ名</th>
-              <th>コメント</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @comments.each do |comment| %>
-              <tr>
-                <td><%= comment.user.name %></td>
-                <td><%= comment.comment %></td>
-                <td>
-                  <% if user_signed_in? && current_user.id == comment.user_id %>
-                    <%= link_to "編集", edit_menu_comment_path(comment.menu.id, comment.id), class:"btn btn-sm btn-success" %>
-                    <%= link_to "削除", menu_comment_path(comment.menu.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-sm btn-danger"%>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
+    <div class="col-5 head-margin">
+      <h5>その他記事</h5>
+      <% @menus.shuffle.first(4).each do |menu| %>
+        <table>
+          <tr>
+            <td><%= link_to menu.title, menu_path(menu.id) %></td>
+          </tr>
         </table>
-      </div>
-    </div>
+      <% end %>
+
+      <h5 class="heading-margin">コメント</h5>
+      <%= form_with model: [@menu, @comment], local: true do |f| %>
+        <%= f.text_area :comment, placeholder: "コメントする", class:"form-control", rows:"2" %>
+        <%= f.submit "コメント", class:"btn btn-sm btn-primary comment-submit" %>
+      <% end %>
+
+      <h5 class="heading-margin">コメント一覧</h5>
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-secondary">
+            <th>ユーザ名</th>
+            <th>コメント</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td><%= comment.user.name %></td>
+              <td><%= comment.comment %></td>
+              <td>
+                <% if user_signed_in? && current_user.id == comment.user_id %>
+                  <%= link_to "編集", edit_menu_comment_path(comment.menu.id, comment.id), class:"btn btn-sm btn-success" %>
+                  <%= link_to "削除", menu_comment_path(comment.menu.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-sm btn-danger"%>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div><!-- /.head-margin -->
   </div>
 </div>

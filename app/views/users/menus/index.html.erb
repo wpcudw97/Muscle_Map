@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col" style="margin-top:20px">
-     <div class="d-flex justify-content-between mx-auto">
-       <h2>メニュー一覧</h2>
+    <div class="col head-margin">
+      <div class="d-flex justify-content-between mx-auto">
+        <h2>メニュー一覧</h2>
         <h5>
           <%= form_tag menus_path, method: :get, class: 'boards__searchForm' do %>
             タグ検索:
@@ -16,7 +16,8 @@
           <% end %>
         </h5>
       </div>
-      <div class="row">
+
+      <div class="row menu-content">
         <% @menus.each do |menu| %>
         <div class="col">
           <%= link_to menu_path(menu.id) do %>
@@ -26,7 +27,8 @@
           <p>ジャンル名:<%= menu.genre.name %></p>
         </div>
         <% end %>
-      </div>
-    </div>
+      </div><!-- /.menu-content -->
+
+    </div><!-- /.head-margin -->
   </div>
 </div>

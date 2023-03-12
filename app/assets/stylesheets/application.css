@@ -27,6 +27,26 @@
   margin-top: 20px;
 }
 
+.form-group {
+  margin-top: 20px;
+}
+
+/* homes/top/about */
+.homes-content {
+  margin-top: 150px;
+  text-align: center;
+}
+
+/* homes/top */
+.homes-content h4 {
+  margin-top: 20px;
+}
+
+/* about */
+.homes-content p {
+  margin-top: 20px;
+}
+
 /* users/show */
 .user-table {
   margin-top: 100px;
@@ -58,7 +78,7 @@
   margin-left: 20px;
 }
 
-/* uses/unsubscribe */
+/* users/unsubscribe */
 .unsubscribe-content {
   margin-top: 120px;
   text-align: center;
@@ -76,12 +96,26 @@
   margin-left: 20px;
 }
 
-/* weight/index */
-.weight-form {
+/* weights/show */
+.weight-button {
+  margin-left: 20px;
+}
+
+/* menus/show */
+.menu-item {
+  margin-left: 5px;
+}
+
+.menu-text {
   margin-top: 20px;
 }
 
-/* weight/show */
-.weight-button {
-  margin-left: 20px;
+/*menus/posts/submit */
+.comment-submit {
+  margin-top: 10px;
+}
+
+/* post/show */
+.post-item {
+  margin-left: 10px;
 }

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-6" style="margin-top:20px">
+    <div class="col-6 head-margin">
 
       <% if @post.errors.any? %>
         <%= @post.errors.count %>件のエラーが発生しました
@@ -11,10 +11,10 @@
         </ul>
       <% end %>
 
-    <h2>投稿する</h2>
+      <h2>投稿する</h2>
       <%= form_with model: @post  do |f| %>
 
-        <div class="form-group" style="margin-top:20px">
+        <div class="form-group">
           <h5 class="mb-3">タイトル</h5>
           <%= f.text_field :title, class:"form-control", style:"width:70%", id:"title" %>
         </div>
@@ -29,16 +29,16 @@
           <%= f.file_field :post_image, accept: "image/*", id:"postimage"%>
         </div>
 
-        <div style="margin-top:20px">
+        <div class="form-group">
           <%= f.submit "投稿する", class:"btn btn-success" %>
         </div>
 
       <% end %>
-    </div>
+    </div><!-- /.head-margin -->
 
-    <div class="col-6" style="margin-top:20px">
+    <div class="col-6 head-margin">
       <h2>投稿一覧</2>
-      <table class="table table-hover table-sm" style="margin-top:20px">
+      <table class="table table-hover table-sm">
       <thead>
         <tr>
           <th>ユーザ</th>
@@ -50,7 +50,7 @@
         <% @posts.each do |post| %>
           <tr>
             <td>
-              <p style="margin-left:10px"><%= image_tag @user.get_profile_image(80,80) %></p>
+              <p><%= image_tag @user.get_profile_image(80,80) %></p>
               <p><%= post.user.name %>さん</p>
             </td>
             <td style="vertical-align: middle"><%= post.title %></td>
@@ -59,7 +59,7 @@
         <% end %>
       </tbody>
       </table>
-    </div>
+    </div><!-- /.head-margin -->
 
   </div>
 </div>
