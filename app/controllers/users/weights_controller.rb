@@ -23,7 +23,8 @@ class Users::WeightsController < ApplicationController
   end
 
   def show
-    @weights = Weight.all
+    # @weights = Weight.all
+    @weights = Weight.page(params[:page])
     @weight = Weight.find(params[:id])
   end
 
