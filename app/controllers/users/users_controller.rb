@@ -39,6 +39,7 @@ class Users::UsersController < ApplicationController
   end
 
   def likes
+    @users = User.page(params[:page])
     @favorites = Favorite.where(user_id: current_user.id)
   end
 

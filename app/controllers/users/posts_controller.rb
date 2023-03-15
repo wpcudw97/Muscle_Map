@@ -8,7 +8,6 @@ class Users::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.menu_id = current_user.id
     if @post.save
       flash[:notice] = "投稿しました！"
       redirect_to post_path(@post.id)
@@ -20,7 +19,7 @@ class Users::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(3)
     @user = User.where(params[:id])
     @user = current_user
     @post = Post.new

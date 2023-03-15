@@ -1,6 +1,6 @@
 class Admin::PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page])
     @user = User.where(params[:id])
     @user = current_user
     @post = Post.new

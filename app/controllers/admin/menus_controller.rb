@@ -2,7 +2,7 @@ class Admin::MenusController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @menus = Menu.all
+    @menus = Menu.page(params[:page])
     @menu = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus : Menu.all
   end
 
