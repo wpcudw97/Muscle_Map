@@ -35,6 +35,20 @@
           <%= f.text_area :body, class:"form-control", rows:"7" %>
         </div>
 
+        <div class="form-group">
+          <%= f.label :tag, "タグ" %>
+           <div class="d-flex justify-content-space-between">
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+              <%= tag.label do %>
+                <div style="margin-left:20px">
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
          <div class="form-group text-center">
           <%= f.submit "保存する", class:"btn btn-success" %>
           <%= link_to "削除する", admin_menu_path(@menu), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-danger delete-button" %>
