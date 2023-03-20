@@ -76,12 +76,11 @@
 }
 
 .user-items {
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
-.item-1,
-.item-3 {
-  margin-left: 220px;
+.item-1 {
+  margin-left: 100px;
 }
 
 .item-2 {

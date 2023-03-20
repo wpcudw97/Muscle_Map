@@ -2,8 +2,7 @@ class Users::MenusController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @menus = Menu.page(params[:page])
-    @menu = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus: Menu.all
+    @menus = params[:tag_id].present? ? Tag.find(params[:tag_id]).menus.page(params[:page]): Menu.all.page(params[:page])
   end
 
   def show
