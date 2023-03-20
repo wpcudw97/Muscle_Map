@@ -133,13 +133,6 @@ ActiveRecord::Schema.define(version: 2023_03_06_153304) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "weight_managements", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.float "weight", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "weights", force: :cascade do |t|
     t.integer "user_id", null: false
     t.float "weight", null: false
