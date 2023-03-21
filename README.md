@@ -57,3 +57,12 @@
 
 - 【Font Awesome】
 - https://fontawesome.com/
+
+- 【GAHAG】
+- https://gahag.net/
+
+- 【PAKUTASO】
+- https://www.pakutaso.com/
+-
+- 【パブリックドメインQ】
+- https://publicdomainq.net/
