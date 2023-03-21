@@ -31,6 +31,14 @@
 
 
 ## 設計書
+- 【ER図】
+- https://drive.google.com/file/d/1y9f0gPDeaO6ggf0ulvKiZO11bABeW8RA/view?usp=sharing
+
+- 【テーブル定義書】
+- https://docs.google.com/spreadsheets/d/1IbBzzdhKsR1cdG-1BPXevwsgU9qujC4M-zxJLiskGfY/edit?usp=sharing
+
+- 【アプリケーション詳細設計書】
+- https://docs.google.com/spreadsheets/d/1rwFI_BPw0JOzttQ3c2gsLzbr078nHTac6J5KbPP6Le0/edit?usp=sharing
 
 
 ## 開発環境
@@ -41,4 +49,11 @@
 - IDE：Cloud9
 
 ## 使用素材
-使用検討中です
+- 【photoAC 写真のフリー素材サイト】
+- https://www.photo-ac.com/
+
+- 【ICOOON MONO】
+- https://icooon-mono.com/
+
+- 【Font Awesome】
+- https://fontawesome.com/
