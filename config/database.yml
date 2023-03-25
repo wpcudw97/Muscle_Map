@@ -22,7 +22,7 @@ test:
 
 production:
   <<: *default
-  datebase: <%= ENV['DB_DATABESE'] %>
+  database: <%= ENV['DB_DATABESE'] %>
   adapter: mysql2
   encoding: utf8mb4
   charset: utf8mb4
